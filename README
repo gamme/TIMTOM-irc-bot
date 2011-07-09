@@ -1,3 +1,51 @@
 Hi, my name is gamme and this is my friend TIMTOM.  TIMTOM is written in mSL, the mIRC Scripting Language.  In order to use TIMTOM, you first must download mIRC: www.mirc.com
 
 Now would like TIMTOM to serve you?  I'm sure you would.  First, connect to your favorite IRC server under the nick TIMTOM.  If TIMTOM is already taken choose something similar.  Now, on your mIRC tabs, click on Tools:Scripts Editor:Remote and copy the contents of TIMTOM into Remote.  That's it!  Now TIMTOM can serve you and your friends in your favorite channel!
+
+Below are the features of TIMTOM:
+
+Join functions:
+
+TIMTOM welcomes everyone who enters the channel and gives them voice.
+
+The following are TIMTOM's text commands.  Type any of these words or phrases to receive a message from TIMTOM.  Some give different messages at different times.
+
+TIMTOM - TIMTOM asks how he may serve you.
+HELP - TIMTOM explains his purpose and the purpose of the channel you are in.
+WHAT'S NEW - TIMTOM explain some of the new features available.
+SEX - You can have sex with TIMTOM (if he permits it).
+
+***Notice: To enable "Free Sex Mode", in Line 32, change 68 to 1; and in Line 33, change 41 to 1.  Now TIMTOM will have sex with everyone at any moment.  Please only enable "Free Sex Mode" on special occasions.
+
+HORSE - Do you like horses?
+WHEEL - TIMTOM invites you to spin the wheel.
+SPIN - Spin the wheel!  Win a prize!
+<state> - Type any state in the United States of America and TIMTOM will give some information about it.  
+<country> - TIMTOM also has information on the following countries: AFRICA, CANADA, CHINA, FRANCE, and SWEDEN.
+SOUP - TIMTOM brings out hot soup for everyone in the channel (excluding ops).  
+
+***Notice: Currently TIMTOM is only able to serve soup for a maximum of 35 people.  We are working hard to obtain more soup for larger channels.  Look for updates.
+
+MORE SOUP - TIMTOM will give you more soup if you still aren't satisfied.
+TEA - TIMTOM brings out hot tea for everyone in the channel (excluding ops).
+
+***Notice: Currently TIMTOM is only able to serve soup for a maximum of 35 people.  We are working hard to obtain more soup for larger channels.  Look for updates.
+
+MORE TEA - TIMTOM will give you more tea if you still aren't satisfied.
+JESUS - TIMTOM reminds you of Jesus' love for you.
+RINGS - In preparation for the sacrament of marriage, TIMTOM presents the rings for everyone in the channel (excluding ops).
+
+***Notice: Currently TIMTOM only has 35 rings.  We are working on purchasing more.  Look for updates.
+
+MARRY - You marry a random person in the channel.
+DIVORCE - You divorce a random person in the channel.
+DRINK - TIMTOM pours you a drink of his choice.
+CAKE - TIMTOM serves you a slice of cake.
+KEEK - "KEEK" is a rather curious command.  We aren't sure what it's all about but TIMTOM assures us that it's something special.  Look for updates.
+PONY - Finally you get a pony.
+ADMISSIONS - TIMTOM is unofficially sponsored by the generous folks at Hertford College at Oxford.  Show them your support!
+HIDE - TIMTOM's favorite colors hide on all the members of the channel.
+SEEK - You attempt to find the colors.  Don't find Satan or YOU'RE OUT!
+<member> - Each member of #gamme on irc.hardchats.com has earned a special message from TIMTOM.  Stop by and you too can get your own personal message!
+
+That's it for now!  Enjoy TIMTOM, have fun, and SPIN THAT WHEEL!!!  Look for updates.
