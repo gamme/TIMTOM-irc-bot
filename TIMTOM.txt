@@ -1,0 +1,594 @@
+Hi, my name is gamme.  This is my friend timtom.  He is a servant to the people.
+Copyright (C) 2011  gamme
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+If you have any questions, comments, complaints, or just want to chat,
+you can e-mail gamme at rennerennerenner@gmail.com.  Timtom also thanks 
+you for giving him the opportunity to serve you.  Be sure to stop by
+#gamme on irc.hardchats.com and say hello to us!  
+
+on *:TEXT:timtom:#: { 
+  msg $chan 4,13 $+ $nick $+ , this is TIMTOM.  How may I serve you?
+}
+
+on *:JOIN:#: { 
+  msg $chan 4,11WELCOME TO TABLE, $upper($nick)
+  mode $chan +v $nick
+}
+
+on *:TEXT:sex:#: { 
+  var %r = $rand(1,68)
+  if (%r == 41) msg $chan 4,12ok, $nick $+ , I will have sex with you now.
+  else msg $chan 7,12 $+ $nick $+ , I cannot perform sex on you at this moment.
+}
+
+on *:TEXT:horse:#: { 
+  msg $chan 3,8 $+ $nick $+ , I like horses too.
+}
+
+on *:TEXT:wheel:#: { 
+  msg $chan 11,1I think it would be a good idea if $nick would spin the wheel.
+}
+
+on *:TEXT:spin:#:{
+  var %r = $rand(1,40)
+  if (%r == 1) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+  if (%r == 2) msg $chan 5,12 $+ $nick $+ , you get 5,12$500
+  if (%r == 3) msg $chan 1,7 $+ $nick $+ , you get 1,7$400
+  if (%r == 4) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
+  if (%r == 5) msg $chan 11,6 $+ $nick $+ , you get 8,4$5000!!! $+ 11,6 WOW!!!
+  if (%r == 6) msg $chan 3,7 $+ $nick $+ , you get 3,7$250
+  if (%r == 7) msg $chan 4,1 $+ $nick $+ , you get 4,1$800
+  if (%r == 8) msg $chan 1,7 $+ $nick $+ , you get 1,7$666.  That's scary business.
+  if (%r == 9) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
+  if (%r == 10) msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
+  if (%r == 11) msg $chan 14,4 $+ $nick $+ , you get 14,4$47.  That's ok, it's better than nothing.
+  if (%r == 12) msg $chan 8,9 $+ $nick $+ , you get 8,9$900
+  if (%r == 13) msg $chan 5,7 $+ $nick $+ , you get 5,7$1,000,000!!! THAT'S AMAZING!!!
+  if (%r == 14) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Still better than bankrupt.
+  if (%r == 15) msg $chan 11,10 $+ $nick $+ , you get 11,10$251 
+  if (%r == 16) msg $chan 3,7 $+ $nick $+ , you get 3,7$300
+  if (%r == 17) msg $chan 4,1 $+ $nick $+ , you get 4,1$450
+  if (%r == 18) msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice hefty amount.
+  if (%r == 19) msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
+  if (%r == 20) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+  if (%r == 21) msg $chan 4,11 $+ $nick $+ , you win a trip to Detroit, Michigan!  Good for you!
+  if (%r == 22) msg $chan 5,12 $+ $nick $+ , you get 5,12$11,000
+  if (%r == 23) msg $chan 1,7 $+ $nick $+ , you get fifty dollars.
+  if (%r == 24) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Let your secret crush spin next.
+  if (%r == 25) msg $chan 11,6 $+ $nick $+ , you get 8,4$999.99!!! $+ 11,6 WOW!!!
+  if (%r == 26) msg $chan 3,7 $+ $nick $+ , you win a trip to Kenya, Africa.
+  if (%r == 27) msg $chan 4,1 $+ $nick $+ , you get 4,1$700
+  if (%r == 28) msg $chan 1,7 $+ $nick $+ , you get 1,7$100.  Maybe you can buy us all tacos later.
+  if (%r == 29) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  I'm 11,6 NOT 8,4sorry about that.
+  if (%r == 30) msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
+  if (%r == 31) msg $chan 14,4 $+ $nick $+ , you get 14,4$680.  Do you remember the time you got a million?  That was crazy.  Not this time though.
+  if (%r == 32) msg $chan 8,9 $+ $nick $+ , you get 8,9$900
+  if (%r == 33) msg $chan 5,7 $+ $nick $+ , you win a trip to Hawaii!!!!
+  if (%r == 34) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry.
+  if (%r == 35) msg $chan 11,10 $+ $nick $+ , you get 11,10$255 
+  if (%r == 36) msg $chan 3,7 $+ $nick $+ , you get 3,7$390
+  if (%r == 37) msg $chan 4,1 $+ $nick $+ , you get 4,1$000. LOL.
+  if (%r == 38) msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice HEEEEFTY amount.
+  if (%r == 39) msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
+  if (%r == 40) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+}
+
+on *:TEXT:Alabama:#: { 
+  msg $chan 3,8Alabama eats my children.
+}
+
+on *:TEXT:Alaska:#: { 
+  msg $chan 3,8Alaska is a cotton gin.
+}
+
+on *:TEXT:Arizona:#: { 
+  msg $chan 3,8Arizona is the land of the forsaken bee hives.
+}
+
+on *:TEXT:Arkansas:#: { 
+  msg $chan 3,8Arkansas is a potato rally.
+}
+
+on *:TEXT:California:#: { 
+  msg $chan 3,8The capital of California is Los Angeles.
+}
+
+on *:TEXT:Colarado:#: { 
+  msg $chan 3,8Colarado was the missing egg in the blue carton.
+}
+
+on *:TEXT:Connecticut:#: { 
+  msg $chan 3,8Connecticut is a wild stallion.
+}
+
+on *:TEXT:Delaware:#: { 
+  msg $chan 3,8Delaware is a label-making compartment of beauty.
+}
+
+on *:TEXT:Florida:#: { 
+  msg $chan 3,8The capital of Florida is Disney World.
+}
+
+on *:TEXT:Georgia:#: { 
+  msg $chan 3,8Georgia plates early, makes space for Willy.
+}
+
+on *:TEXT:Hawaii:#: { 
+  msg $chan 3,8The capital of Hawaii is dog.
+}
+
+on *:TEXT:Idaho:#: { 
+  msg $chan 3,8Idaho is a flowing mountain.
+}
+
+on *:TEXT:Illinois:#: { 
+  msg $chan 3,8The capital of Illinois is Deal Or No Deal.
+}
+
+on *:TEXT:Indiana:#: { 
+  msg $chan 3,8Indiana rests softly in my left breast pocket sandwich player machine box heavy.
+}
+
+on *:TEXT:Iowa:#: { 
+  msg $chan 3,8Friends make pottery in Iowa.
+}
+
+on *:TEXT:Kansas:#: { 
+  msg $chan 3,8Kansas is a candy cane land in $chan $+ .
+}
+
+on *:TEXT:Kentucky:#: { 
+  msg $chan 3,8The capital of Kentucky is horse.
+}
+
+on *:TEXT:Louisiana:#: { 
+  msg $chan 3,8Louisiana is a bubble paper pepper boy.
+}
+
+on *:TEXT:Maine:#: { 
+  msg $chan 3,8Maine is the capital of France.
+}
+
+on *:TEXT:Maryland:#: { 
+  msg $chan 3,8The capital of Maryland is inside the fried pickled answering machine tape.
+}
+
+on *:TEXT:Massachusetts:#: { 
+  msg $chan 3,8Massachusettes is the capital of Happy time.
+}
+
+on *:TEXT:Michigan:#: { 
+  msg $chan 3,8 $+ $nick I love you more than the sun and the sky.  I want you to be my forever.
+}
+
+on *:TEXT:Minnesota:#: { 
+  msg $chan 3,8Minnesota, will you be my road puppy?
+}
+
+on *:TEXT:Mississippi:#: { 
+  msg $chan 3,8Glad tidings to you, $nick $+ , wherever you are.
+}
+
+on *:TEXT:Missouri:#: { 
+  msg $chan 3,8The fly sunk to the bottom of the jar of oil.  The fly's name was Montel.
+}
+
+on *:TEXT:Montana:#: { 
+  msg $chan 7,10You didn't press enter hard enough.
+}
+
+on *:TEXT:Nebraska:#: { 
+  msg $chan 3,8Spinning sunflower wreath, you come in the morning and leave by nightfall.
+}
+
+on *:TEXT:Nevada:#: { 
+  msg $chan 3,8Nevada is first in my peeegy back machine-eeeeeeeeeeee-ooooooooooo.
+}
+
+on *:TEXT:New Hampshire:#: { 
+  msg $chan 3,8I hear shovels.  Lock the doors. NOW NOOOOWWWW 1,4NOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWWW!!!!!!!!
+}
+
+on *:TEXT:New Jersey:#: { 
+  msg $chan 3,8We all eat pots and pans.
+}
+
+on *:TEXT:New Mexico:#: { 
+  msg $chan 3,8Thunder, ice, and twins joined at the hip, make my day a solid whip?  Whippie!
+}
+
+on *:TEXT:New York:#: { 
+  msg $chan 3,8The capital of New York is New York City.
+}
+
+on *:TEXT:North Carolina:#: { 
+  msg $chan 3,8North Carolina makes $chan a happy land for you.
+}
+
+on *:TEXT:North Dakota:#: { 
+  msg $chan 3,8I am the willing partner in your N. Dakota movement.
+}
+
+on *:TEXT:Ohio:#: { 
+  msg $chan 3,8Ohio is diabetes.
+}
+
+on *:TEXT:Oklahoma:#: { 
+  msg $chan 3,8Oklahoma is my tea set.
+}
+
+on *:TEXT:Oregon:#: { 
+  msg $chan 3,8There's plenty of lightbulbs in the furnace.
+}
+
+on *:TEXT:Pennsylvania:#: { 
+  msg $chan 3,8The capital of Pennsylvania is cheddar.
+}
+
+on *:TEXT:Rhode Island:#: { 
+  msg $chan 3,8How could I forget you, Rhode Island?  You are a gentle beauty.
+}
+
+on *:TEXT:South Carolina:#: { 
+  msg $chan 3,8South Carolina is poppy.
+}
+
+on *:TEXT:South Dakota:#: { 
+  msg $chan 3,11Do you really think you own me, $nick $+ ?
+}
+
+on *:TEXT:Tennessee:#: { 
+  msg $chan 3,8Tennessee is a puppy cage.
+}
+
+on *:TEXT:Texas:#: { 
+  msg $chan 3,8Feast on these berries.  They were created through honor, diligence, and musk.
+}
+
+on *:TEXT:Utah:#: { 
+  msg $chan 3,8The little pieces of paper need to be evaluated.
+}
+
+on *:TEXT:Vermont:#: { 
+  msg $chan 3,8Vermont is a picnic tree.
+}
+
+on *:TEXT:Virginia:#: { 
+  msg $chan 3,8Virginia is a glue cow.
+}
+
+on *:TEXT:Washington:#: { 
+  msg $chan 3,8Let's roll up another traffic ordinance and place it beneath the Bubber Tree.
+}
+
+on *:TEXT:West Virginia:#: { 
+  msg $chan 3,8Them tree trunks look like legs.
+}
+
+on *:TEXT:Wisconsin:#: { 
+  msg $chan 3,8If we connect the brown pipe to the gray pipe we make famous grandwich butter spread.
+}
+
+on *:TEXT:Wyoming:#: { 
+  msg $chan 3,8Claw me to death with pear skins.
+}
+
+on *:TEXT:Africa:#: { 
+  msg $chan 3,8Africa is a lollipop for you.
+}
+
+on *:TEXT:Canada:#: { 
+  msg $chan 3,8Canada is made of copper and sand.
+}
+
+on *:TEXT:China:#: { 
+  msg $chan 3,8Thank you for relaxing in $chan $+ .  China.
+}
+
+on *:TEXT:France:#: { 
+  msg $chan 3,8France is a boat.
+}
+
+on *:TEXT:Sweden:#: { 
+  msg $chan 3,8The capital of Sweden is pah-pah.
+}
+
+on *:TEXT:soup:#: { 
+  msg $chan 8,6TIMTOM brings out the hot soup for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  Enjoy friends.  
+}
+
+on *:TEXT:tea:#: { 
+  msg $chan 4,12TIMTOM brings out the hot tea for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  Enjoy friends.  
+}
+
+on *:TEXT:more soup:#: { 
+  msg $chan 10,4Sorry, $nick $+ , here's some more soup.
+}
+
+on *:TEXT:more tea:#: { 
+  msg $chan 1,12Sorry, $nick $+ , here's some more tea.
+}
+
+on *:TEXT:jesus:#: { 
+  msg $chan 3,8 $+ $nick $+ , Jesus loves you more than $chan $+ .  I'm sorry.  $chan just doesn't compare.
+}
+
+on *:TEXT:rings:#: { 
+  msg $chan 8,6TIMTOM brings out the rings for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  Enjoy friends.  
+}
+
+on *:TEXT:help:#: { 
+  msg $chan 7,10Hi, how are you doing?  My name is TIMTOM and you are in $chan $+ .  I am a servant to the people, and like to fancy myself as quite the capable gentleman.  If there's anything you need don't hesitate to ask.  Everyone has a voice here and we treat everyone with love and kindness.  
+  msg $chan 4,11Some of our popular features include hot soup and hot tea, horses, and NEVER FEAR: we offer the sacrament of marriage and also deal in divorces, and Wheel of Fortune is always on.  Kick off your shoes, relax, and don't worry about a thing.  The internet cannot hurt you now.  You are in $chan $+ .
+}
+
+on *:TEXT:drink:#:{
+  var %r = $rand(1,10)
+  if (%r == 1) msg $chan 4,11timtom brings an ice cold beer for $nick $+ 
+  if (%r == 2) msg $chan 8,2timtom pours $nick a shot of whiskey
+  if (%r == 3) msg $chan 8,1timtom pours $nick a shot of bourbon
+  if (%r == 4) msg $chan 7,5timtom pours $nick a glass of lemonade
+  if (%r == 5) msg $chan 3,8timtom brings a bloody mary out for $nick $+ 
+  if (%r == 6) msg $chan 8,2timtom pours $nick a glass of milk
+  if (%r == 7) msg $chan 6,11timtom pours $nick a shot of vodka
+  if (%r == 8) msg $chan 2,10timtom gives $nick a sip from his beer
+  if (%r == 9) msg $chan 4,11timtom pours $nick a shot of Robitussin
+  if (%r == 10) msg $chan 1,12timtom brings $nick a tall glass of water
+}
+
+on *:TEXT:keek:#:{
+  var %r = $rand(1,64)
+  if (%r == 1) msg $chan 4,11Your name is $nick $+ .  My life is a life of horse castles.
+  if (%r == 2) msg $chan 8,2Your name is $nick $+ .  Party favorites go well with wiggly fins.
+  if (%r == 3) msg $chan 8,1Your name is $nick $+ .  We force scarecrows into the space behind cotton pilgrims.
+  if (%r == 4) msg $chan 7,5Your name is $nick $+ .  Do your feet make flat Rothchilds?
+  if (%r == 5) msg $chan 3,8Your name is $nick $+ .  Skeleton handlebars are fastly becoming bacon tin cup freedom tunics.
+  if (%r == 6) msg $chan 8,2timtom eats a pine tree.
+  if (%r == 7) msg $chan 6,11timtom likes working in his railroad pants.
+  if (%r == 8) msg $chan 2,10timtom gives a toy truck to his neighbor Santa.
+  if (%r == 9) msg $chan 4,11All the fat young giraffes are gathered for a bag-off.
+  if (%r == 10) msg $chan 1,12Your name is $nick and my name is Geoffrey Giraffee.
+  if (%r == 11) msg $chan 7,5Your name is $nick $+ .  All the piglets are crying over their nose bleeds.
+  if (%r == 12) msg $chan 3,8Your name is $nick $+ .  Cold bowls of rice are waiting just above the paint can rim.
+  if (%r == 13) msg $chan 8,2timtom made a cloth figurine symbolizing the process of mitosis.
+  if (%r == 14) msg $chan 6,11timtom spends his Saturdays reading hot sauce packets.
+  if (%r == 15) msg $chan 2,10TIMTOM HERE!  We make Ronald McDonald bibs for sailors.
+  if (%r == 16) msg $chan 4,11Will you place your gentle fingers on my spikey larva?
+  if (%r == 17) msg $chan 1,12Your name is $nick and I just made frosted egg whites.
+  if (%r == 18) msg $chan 2,10TIMTOM HERE!  The chocolate monsignor is signing autographs in the vestibule.
+  if (%r == 19) msg $chan 2,10TIMTOM HERE!  The current weather in Austria-Hungary is 11.
+  if (%r == 20) msg $chan 2,10TIMTOM HERE!  When the toilet paper rolls first came out I was skeptical too.
+  if (%r == 21) msg $chan 2,10TIMTOM HERE!  GARBAGE! GARBAGE! GARBAGE! JASJAJFADSJFSDFDSBFSDHFSDHFSDHFSHJSFDHJDFSJHFSDHJSDHJSDHJFSDHFSNVNVDSNSUFEYFENDSNJVVllllllllllllllllllllllllllllllll
+  if (%r == 22) msg $chan 2,10TIMTOM HERE!  These are the days when wine smells like sweet roses.
+  if (%r == 23) msg $chan 2,10TIMTOM HERE!  The horrible elevator is next to the unhorrible escalator (in happy candy).
+  if (%r == 24) msg $chan 2,10TIMTOM HERE!  Elton is a pride.
+  if (%r == 25) msg $chan 2,10TIMTOM HERE!  Cheese can be white, yellow, or orange and your fingers eat themselves dry as a bone my flakiest one.
+  if (%r == 26) msg $chan 2,10TIMTOM HERE!  O the bells go snap with a white lion cap and the chins of the thrills of kooray.  Take your belt on feet let it pick up the meat and spatula stands for a maid.  O the bells go snap with a white lion cap!
+  if (%r == 27) msg $chan 2,10TIMTOM HERE!  We make honky horns.
+  if (%r == 28) msg $chan 1,12Your name is $nick $+ .  We all grew up over the icing truck.
+  if (%r == 29) msg $chan 7,5Your name is $nick $+ .  Forget what the sunbirds told you during spanking weather.
+  if (%r == 30) msg $chan 3,8Your name is $nick $+ .  Flowing monster eat my daddy, pull my ribbons over my webbing.  Polar monster they call Vaxmonsky, tear me down from this wall of rabbit bark.
+  if (%r == 31) msg $chan 8,2timtom discovered that jeans can be used to make paper.
+  if (%r == 32) msg $chan 6,11timtom spends his Saturdays reading fiction.
+  if (%r == 33) msg $chan 2,10TIMTOM HERE!  The glass is always perched on a ledge near Franklin's Gower.
+  if (%r == 34) msg $chan 4,11Ah, the salty bells are ringing again.  Time to waste another helium balloon.
+  if (%r == 35) msg $chan 1,12Your name is $nick and everyone wants to climb on you.
+  if (%r == 36) msg $chan 2,10TIMTOM HERE!  LET'S PUT SOME TABLECLOTH ON TOP OF THE PIANO!
+  if (%r == 37) msg $chan 2,10TIMTOM HERE!  FROZEN HOTDOGS MAKE THE FUNNEST FUNNEL CAKES SINCE I DON'T KNOW NEXT TUESDAY!
+  if (%r == 38) msg $chan 2,10TIMTOM HERE!  HOSE DOWN THE GARBAGE CAN LID BEFORE WE GET ICY.
+  if (%r == 39) msg $chan 2,10TIMTOM HERE!  THESE SMALL PARASITES ARE NAMED AFTER ZONING BOARD NOBLEMEN.
+  if (%r == 40) msg $chan 2,10TIMTOM HERE!  WITHOUT YELLOW LEGS THE SUN WOULD ONLY PROTECT THE 8 PERCENT OF THE POPULATION THAT ACTUALLY TAKES THE TIME TO BREATHE IN THE CHICKEN POX VACCINE THAT WAS STUMBLING EYESHADOW.
+  if (%r == 41) msg $chan 2,10TIMTOM HERE!  IT'S HARD FOR HITCHHIKERS TO GET PICKED UP ANYMORE.
+  if (%r == 42) msg $chan 7,2Every hooved animal with pink flesh has a soda function.
+  if (%r == 43) msg $chan 6,11Your name is $nick $+ , and it's no wonder that the wooden play pieces are so smooth.
+  if (%r == 44) msg $chan 2,4Your name is $nick $+ , do you know where the wires to the cabinet are?
+  if (%r == 45) msg $chan 4,11Your name is $nick $+ , 4,1KETCHUP4,11 AND 8,1MUSTARD4,11 ::::: 8,1MUSTARD4,11 AND 7,1MAYONAISE
+  if (%r == 46) msg $chan 2,10TIMTOM HERE!  I THINK WE ALL LOOK GOOD IN OUR TREEHOUSES.
+  if (%r == 47) msg $chan 2,10TIMTOM HERE!  QUESTIONS OF SKY AND SEA ARE NOT TO BE ADDRESSED BEFORE MORNING TEA.
+  if (%r == 48) msg $chan 2,10TIMTON HERE!  EGG YOLKS AND EGG WHITES, JUST SNIFFIN'.
+  if (%r == 49) msg $chan 3,8Your name is $nick $+ , and I do believe you've perfected the leap year.
+  if (%r == 50) msg $chan 4,2timtom wants a cleaner bathtub for Halloween this year.
+  if (%r == 51) msg $chan 2,4timtom holds a piglet zygote in the palm of his aqua marine green handshire.
+  if (%r == 52) msg $chan 4,2timtom rides the lightning bolt upwards.
+  if (%r == 53) msg $chan 8,2timtom likes when palm readers dictate.
+  if (%r == 54) msg $chan 2,6TIMTOM HERE!  HOW'S THE CONCRETE STATUE COMING?
+  if (%r == 55) msg $chan 11,1Your name is $nick $+ , and every tungsten tooth will be grinded accordingly.
+  if (%r == 56) msg $chan 4,11timtom needs a fireproof tee shirt.
+  if (%r == 57) msg $chan 5,9Your name is $nick $+ , $nick the quick.  Welcome to Quackers.
+  if (%r == 58) msg $chan 8,2timtom eats a bell.
+  if (%r == 59) msg $chan 8,2timtom eats a bulb.
+  if (%r == 60) msg $chan 8,2timtom eats a bolt.
+  if (%r == 61) msg $chan 8,2timtom eats a beet.
+  if (%r == 62) msg $chan 4,11Your name is $nick $+ , 1,4KETCHUP4,11 AND 1,8MUSTARD4,11 ::::: 8,1MUSTARD4,11 AND 7,1MAYONAISE
+  if (%r == 63) msg $chan 4,11Your name is $nick $+ , 4,1KETCHUP4,11 AND 1,8MUSTARD4,11 ::::: 1,8MUSTARD4,11 AND 7,1MAYONAISE
+  if (%r == 64) msg $chan 4,11Your name is $nick $+ , 1,4KETCHUP4,11 AND 8,1MUSTARD4,11 ::::: 1,8MUSTARD4,11 AND 1,7MAYONAISE
+}
+
+on *:TEXT:aesop:#: { 
+  msg $chan 10,7You are an excellent chatter and just an all around great person to be around aesop.  You can stop by #gamme anytime and that's fine by me.
+}
+
+on *:TEXT:avi:#: { 
+  msg $chan 10,7You are a strong chatter and exhibit all the qualities of a wonderful human being, avi.  Never be a stranger to #gamme.
+}
+
+on *:TEXT:bats:#: { 
+  msg $chan 10,7Hey, bats, you're the best.  I hope you're having fun here in #gamme because quite frankly we're all delighted and even a bit humbled that you'd hang out here with us.  Keep up the strong chatter.
+}
+
+on *:TEXT:berry:#: { 
+  msg $chan 10,7berry, berry, who will you marry today?  We love you berry.  Your presence here brings a certain class to $chan and we hope to never let you down in your expectations.
+}
+
+on *:TEXT:hlp:#: { 
+  msg $chan 10,7hlp, good friend.  I hope you're having a pleasant stay here at #gamme.  If there's anything you need you just give a holler, ya hear?  Love ya hlp.
+}
+
+on *:TEXT:mano:#: { 
+  msg $chan 10,7Oh mano.  Where would we be today without the constant support of you?  You've been here since the beginning and we hope you'll be here for years to come.  Keep up the progressive chatting.
+}
+
+on *:TEXT:nza:#: { 
+  msg $chan 10,7nza, the kind but stern leader.  Your presence here makes $chan feel just a touch more civilized.  Without you we might never have gotten to where we are today.  Stay as long as you wish; there's always a place for you and a hot bowl of soup waiting in #gamme.
+}
+
+on *:TEXT:papersk1n:#: { 
+  msg $chan 10,7What's up papersk1n?  You're a tough one to please but it's people like you who make #gamme better.  You are a 100% correct chatter and we feel honored that you would chat here.  Your criticisms are always noted and changes are implemented as soon as possible.
+}
+
+on *:TEXT:nay:#: { 
+  msg $chan 10,7You've earned it nay.  You're a big part of #gamme.
+}
+
+on *:TEXT:sloth:#: { 
+  msg $chan 10,7Hey sloth.  It's an honor to have you.  Have a good time and take advantage of the relaxing resources we make available to our members.
+}
+
+on *:TEXT:z:#: { 
+  msg $chan 10,7z, you are a wonderful addition to #gamme.  I know you'll love stopping in as much as possible and we'll be waiting for you to stop by as well.
+}
+
+on *:TEXT:sandy_ravage:#: { 
+  msg $chan 10,7Well if it isn't sandy_ravage, that really cool chatter!  It's such a joy to have people like sandy_ravage sitting down and rooting us on in our successes.  We're all rooting for you too sandy_ravage, so don't be afraid to spin that wheel and make it happen!
+}
+
+on *:TEXT:sniper:#: { 
+  msg $chan 10,7sniper, such a joyous individual.  You can find him spinning and laughing with the guys here in #gamme.  It's hard to find a day in $chan without seeing sniper having a good time with friends.  People like sniper really exemplify what #gamme is all about: soup, tea, the wheel, and good chats with good close friends.
+}
+
+on *:TEXT:turbo:#: { 
+  msg $chan 10,7Hey turbo, did you know that you're a very strong chatter?  Yeah, you are.  You're welcome in #gamme anytime and we know you've been supporting us from Day 1 so we support you in all that you do.  Good luck.
+}
+
+on *:TEXT:gnol:#: { 
+  msg $chan 10,7gnol, we're so pleased that you're staying with us for a time.  You seem like a delightful person and your presence here lights up #gamme in a way that no one else's could.  We hope you'll pick #gamme to be your #1 channel.  <3 <3
+}
+
+on *:TEXT:tute:#: { 
+  msg $chan 10,7Is there anyone more delightful than tute?  I can't think of anyone off the top of my head.  What an awesome person and just a well-rounded chatter.  We're pleased you sit with us at table in #gamme.
+}
+
+on *:TEXT:bzb:#: { 
+  msg $chan 10,7Howdy bzb!  You have strong chat views and your commitment to freedom is commendable.  You've earned a proper place here and you're welcome anytime.  Your debates are challenging and shed light on some flaws of #gamme that need to be addressed.  We are doing our best to make your experience here and everyone else's an enjoyable one.
+}
+
+on *:TEXT:wooster:#: { 
+  msg $chan 10,7wooster has been a supporter of #gamme since Day 1 and we appreciate that.  wooster knows TIMTOM almost as well as I do and wooster wears the unofficial cap of local #gamme historian as well as just a fine chatter and overall well put together human being.  Hats off to you wooster!  Have a cup of tea on us!
+}
+
+on *:TEXT:Matthew:#: { 
+  msg $chan 10,7Hey Matthew!  Did we surprise you?  You did it!  You're a fine chatter and great company in #gamme.  Stop in anytime; I know you'll enjoy some of our newer features.  Sit back, relax, and 4,11SPIN THAT WHEEL!!!
+}
+
+on *:TEXT:qpzdox:#: { 
+  msg $chan 10,7qpzdox, you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in #gamme.  We want you to have the finer things in life because you give us a such a fine, outstanding example of a human being every day you chat with us.
+}
+
+on *:TEXT:oclet:#: { 
+  msg $chan 10,7Hey oclet!  We're pleased with you and, yeah, even if you don't care what we think we'd still love you to stick around #gamme like you have been.  You're someone that everyone can talk to regardless of the people involved or the situation.  A person like you makes a big difference in #gamme.  HOORAH!
+}
+
+on *:TEXT:pony:#: { 
+  msg $chan 7,10Finally, $nick gets a pony.
+}
+
+on *:TEXT:admissions:#: { 
+  msg $chan 1,8Download the Hertford College Admissions iPhone app here: 4,11http://itunes.apple.com/us/app/hertford-college-admissions/id382253306?mt=8
+}
+
+on *:TEXT:marry:#:{
+  var %k = $nick($chan,0)
+  var %j = %k + 2
+  var %i = %k + 1
+  var %r = $rand(1,%j)
+  var %a = $rand(1,10)
+  if (%r == %j) msg $chan 8,4 $+ $nick marries the Dark Lord Satan 
+  elseif (%r == %i) msg $chan 4,1 $+ $nick marries a garbage can 
+  elseif (%a == 1) msg $chan 4,8 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 2) msg $chan 5,11 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 3) msg $chan 3,13 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 4) msg $chan 2,8 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 5) msg $chan 8,1 $+ $nick marries $nick($chan,%r) 
+  elseif (%a == 6) msg $chan 2,10 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 7) msg $chan 6,9 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 8) msg $chan 1,12 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 9) msg $chan 4,11 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 10) msg $chan 8,6 $+ $nick marries $nick($chan,%r) 
+}
+
+on *:TEXT:divorce:#:{
+  var %k = $nick($chan,0)
+  var %j = %k + 2
+  var %i = %k + 1
+  var %r = $rand(1,%j)
+  var %a = $rand(1,10)
+  if (%r == %j) msg $chan 8,4 $+ $nick divorces Satan, Master of Darkness 
+  elseif (%r == %i) msg $chan 4,2 $+ $nick divorces a wet samburger 
+  elseif (%a == 1) msg $chan 9,3 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 2) msg $chan 8,5 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 3) msg $chan 9,14 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 4) msg $chan 2,8 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 5) msg $chan 8,4 $+ $nick divorces $nick($chan,%r) 
+  elseif (%a == 6) msg $chan 7,10 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 7) msg $chan 6,9 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 8) msg $chan 1,12 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 9) msg $chan 12,11 $+ $nick divorces $nick($chan,%r)
+  elseif (%a == 10) msg $chan 8,3 $+ $nick divorces $nick($chan,%r) 
+}
+
+on *:TEXT:what's new:#: {   
+  msg $chan 4,11Hey all!  It's been an exciting last few days for #gamme, as memberships rise, the soup and tea keeps flowing, and that wheel can't stop spinning!  Some of out newest features include 1,4Free Sex Mode4,11, a special time that occurs when the mood is just right (you will receive notice of when it begins), and TIMTOM will allow everyone to sex him then.  Also we've completed our United States collection; all 50 states are available for perusal.  
+  msg $chan 5,11Finally, we have "keek" - a curious little command of which we are not entire sure about yet.  TIMTOM says it's something special and that it will make more sense in due time.  Relax and enjoy yourselves.
+}
+
+on *:TEXT:hide:#: {   
+  msg $chan 1,13TIMTOM has lost control of his 5 favorite colors:  4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7...........  1,13They've gone and hid on everyone in $chan $+ !  We need to find them quick!  
+}
+
+on *:TEXT:seek:#:{
+  var %k = $nick($chan,0)
+  var %j = %k + 2
+  var %i = %k + 1
+  var %r = $rand(1,%j)
+  var %a = $rand(1,5)
+  if (%r == %j) msg $chan 1,13 $+ $nick finds: 1,4Satan, Destroyer of Souls 1,13Sorry, $nick $+ , you're out for this game.  Better luck next game!
+  elseif (%r == %i) { 
+    if (%a == 1) msg $chan 1,13 $+ $nick finds: 1,4ChanServ 1,13Hey Channel Servant!  You're looking rather ravishing in 1,4RED1,13?
+    if (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11ChanServ 1,13That shade of 1,11BLUE1,13 really toots you well!  Toot toot!
+    if (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8ChanServ  1,13You're an owl here in your 1,8YELLOW1,13 gear!
+    if (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12ChanServ  1,13Your chives are as deep as the deep 0,12BLUE1,13 sea.
+    if (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master stuttin' around in those 1,7MAYONAISE1,13 colored shoes!
+  }  
+  elseif (%a == 1) msg $chan 1,13 $+ $nick finds: 1,4 $+ $nick($chan,%r) $+  1,13Well aren't you looking ravishing in 1,4RED1,13?
+  elseif (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11 $+ $nick($chan,%r) $+  1,13That shade of 1,11BLUE1,13 really suits you well.
+  elseif (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8 $+ $nick($chan,%r) $+  1,13You're a star here in your 1,8YELLOW1,13 gear!
+  elseif (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12 $+ $nick($chan,%r) $+  1,13Your eyes are as deep as the deep 0,12BLUE1,13 sea.
+  elseif (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) stuttin' around in those 1,7MAYONAISE1,13 colored shoes!
+}
+
+on *:TEXT:cake:#: { 
+  var %r = $rand(1,10)
+  if (%r == 1) msg $chan 5,11TIMTOM brings $nick some chocolate cake.
+  if (%r == 2) msg $chan 1,8TIMTOM brings $nick some vanilla cake.
+  if (%r == 3) msg $chan 8,1TIMTOM brings $nick some strawberry shortcake.
+  if (%r == 4) msg $chan 1,10Since $nick has been such an angel, TIMTOM brings $nick some angel food cake.
+  if (%r == 5) msg $chan 8,4TIMTOM brings $nick some banana cake.
+  if (%r == 6) msg $chan 8,2TIMTOM brings $nick a bunt cake.
+  if (%r == 7) msg $chan 6,11TIMTOM brings $nick some delicious cheesecake.
+  if (%r == 8) msg $chan 2,10TIMTOM hands $nick a strawberry cupcake.  Enjoy!
+  if (%r == 9) msg $chan 1,4Since $nick has been such a little devil, TIMTOM brings $nick some devil's food cake.
+  if (%r == 10) msg $chan 4,12TIMTOM brings $nick a beautiful slice of marble cake.
+}
