@@ -19,8 +19,8 @@ you can e-mail gamme at rennerennerenner@gmail.com.  Timtom also thanks
 you for giving him the opportunity to serve you.  Be sure to stop by
 #gamme on irc.hardchats.com and say hello to us!  
 
-on *:TEXT:timtom:#: { 
-  msg $chan 4,13 $+ $nick $+ , this is TIMTOM.  How may I serve you?
+on *:TEXT:timtom:#: {
+  msg $chan 4,13 $+ $nick $+ , this is TIMTOM. How may I serve you?
 }
 
 on *:JOIN:#: { 
@@ -570,17 +570,17 @@ on *:TEXT:seek:#:{
     if (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11ChanServ 1,13That shade of 1,11BLUE1,13 really toots you well!  Toot toot!
     if (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8ChanServ  1,13You're an owl here in your 1,8YELLOW1,13 gear!
     if (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12ChanServ  1,13Your chives are as deep as the deep 0,12BLUE1,13 sea.
-    if (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master stuttin' around in those 1,7MAYONAISE1,13 colored shoes!
+    if (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master struttin' around in those 1,7MAYONAISE1,13 colored shoes!
   }  
   elseif (%a == 1) msg $chan 1,13 $+ $nick finds: 1,4 $+ $nick($chan,%r) $+  1,13Well aren't you looking ravishing in 1,4RED1,13?
   elseif (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11 $+ $nick($chan,%r) $+  1,13That shade of 1,11BLUE1,13 really suits you well.
   elseif (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8 $+ $nick($chan,%r) $+  1,13You're a star here in your 1,8YELLOW1,13 gear!
   elseif (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12 $+ $nick($chan,%r) $+  1,13Your eyes are as deep as the deep 0,12BLUE1,13 sea.
-  elseif (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) stuttin' around in those 1,7MAYONAISE1,13 colored shoes!
+  elseif (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) struttin' around in those 1,7MAYONAISE1,13 colored shoes!
 }
 
 on *:TEXT:cake:#: { 
-  var %r = $rand(1,10)
+  var %r = $rand(1,3)
   if (%r == 1) msg $chan 5,11TIMTOM brings $nick some chocolate cake.
   if (%r == 2) msg $chan 1,8TIMTOM brings $nick some vanilla cake.
   if (%r == 3) msg $chan 8,1TIMTOM brings $nick some strawberry shortcake.
@@ -591,4 +591,61 @@ on *:TEXT:cake:#: {
   if (%r == 8) msg $chan 2,10TIMTOM hands $nick a strawberry cupcake.  Enjoy!
   if (%r == 9) msg $chan 1,4Since $nick has been such a little devil, TIMTOM brings $nick some devil's food cake.
   if (%r == 10) msg $chan 4,12TIMTOM brings $nick a beautiful slice of marble cake.
+}
+
+on *:TEXT:hedges:#:{
+  var %r = $rand(1,3)
+  if (%r == 1) msg $chan 0,3THE HEDGES ARE HIGH TODAY, $upper($nick) $+ .  I'LL GO AHEAD AND TRIM THEM THEN.
+  if (%r == 2) msg $chan 0,3THE HEDGES ARE LOOKIN' A BIT LOW TODAY, $upper($nick) $+ .  I'D BETTER WATER THEM SOME.
+  if (%r == 3) msg $chan 0,3THE HEDGES ARE JUST FINE TODAY, $upper($nick) $+ .  SUCH BEAUTIFUL HEDGES WE HAVE.
+}
+
+on *:TEXT:stare:#:{
+  /timer 11 11 msg $chan 4,11TIMTOM IS STARING AT $upper($nick) $+ 
+}
+
+on *:TEXT:marry*:#:{
+  var %a = $rand(1,10)
+  if (%a == 1) msg $chan 4,8 $+ $nick marries $2- $+
+  if (%a == 2) msg $chan 5,11 $+ $nick marries $2- $+
+  if (%a == 3) msg $chan 3,13 $+ $nick marries $2- $+
+  if (%a == 4) msg $chan 2,8 $+ $nick marries $2- $+
+  if (%a == 5) msg $chan 8,1 $+ $nick marries $2- $+ 
+  if (%a == 6) msg $chan 2,10 $+ $nick marries $2- $+
+  if (%a == 7) msg $chan 6,9 $+ $nick marries $2- $+
+  if (%a == 8) msg $chan 1,12 $+ $nick marries $2- $+
+  if (%a == 9) msg $chan 4,11 $+ $nick marries $2- $+
+  if (%a == 10) msg $chan 8,6 $+ $nick marries $2- $+ 
+}
+
+on *:TEXT:divorce*:#:{
+  var %a = $rand(1,10)
+  if (%a == 1) msg $chan 9,3 $+ $nick divorces $2- $+
+  if (%a == 2) msg $chan 8,5 $+ $nick divorces $2- $+
+  if (%a == 3) msg $chan 9,14 $+ $nick divorces $2- $+
+  if (%a == 4) msg $chan 2,8 $+ $nick divorces $2- $+
+  if (%a == 5) msg $chan 8,4 $+ $nick divorces $2- $+ 
+  if (%a == 6) msg $chan 7,10 $+ $nick divorces $2- $+
+  if (%a == 7) msg $chan 6,9 $+ $nick divorces $2- $+
+  if (%a == 8) msg $chan 1,12 $+ $nick divorces $2- $+
+  if (%a == 9) msg $chan 12,11 $+ $nick divorces $2- $+
+  if (%a == 10) msg $chan 8,3 $+ $nick divorces $2- $+ 
+}
+
+on *:TEXT:stare*:#:{
+  /timer 11 11 msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
+}
+
+on *:TEXT:tacos:#: { 
+  var %a = $rand(1,2)
+  if (%a == 1) msg $chan 7,5TIMTOM brings out the crunchy tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+  if (%a == 2) msg $chan 7,5TIMTOM brings out the soft tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+}
+
+on *:TEXT:sauce:#: { 
+  var %a = $rand(1,4)
+  if (%a == 1) msg $chan 0,12TIMTOM hands $nick a packet of 1,8MILD0,12 sauce.  
+  if (%a == 2) msg $chan 0,12TIMTOM hands $nick a packet of 1,7HOT0,12 sauce.  
+  if (%a == 3) msg $chan 0,12TIMTOM hands $nick a packet of 1,4FIRE0,12 sauce. 
+  if (%a == 4) msg $chan 0,12TIMTOM places a dollop of 1,3SOUR CREAM0,12 on $nick $+ 's taco. 
 }
