@@ -417,7 +417,7 @@ on *:TEXT:keek:#:{
   if (%r == 64) msg $chan 4,11Your name is $nick $+ , 1,4KETCHUP4,11 AND 8,1MUSTARD4,11 ::::: 1,8MUSTARD4,11 AND 1,7MAYONAISE
 }
 
-on $*:TEXT:/_?qpzdox$/i:#: { 
+on $*:TEXT:/^(_?qpzdox)$/i:#: { 
   msg $chan 10,7 $+ $1 $+ , you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in $chan $+ .  We want you to have the finer things in life because you give us a such a fine, outstanding example of a human being every day you chat with us.
 }
 
