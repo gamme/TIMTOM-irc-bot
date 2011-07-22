@@ -418,11 +418,11 @@ on *:TEXT:keek:#:{
 }
 
 on $*:TEXT:/^(_?qpzdox)$/i:#: { 
-  msg $chan 10,7 $+ $1 $+ , you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in $chan $+ .  We want you to have the finer things in life because you give us a such a fine, outstanding example of a human being every day you chat with us.
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in $chan $+ .  We want you to have the finer things in life because you give us a such a fine, outstanding example of a human being every day you chat with us.
 }
 
 on *:TEXT:aesop:#: { 
-  msg $chan 10,7You are an excellent chatter and just an all around great person to be around $1 $+ .  You can stop by $chan anytime and that's fine by me.
+  msg $chan 1,8GOLD 10,7You are an excellent chatter and just an all around great person to be around $1 $+ .  You can stop by $chan anytime and that's fine by me.
 }
 
 on *:TEXT:avi:#: { 
@@ -433,20 +433,20 @@ on *:TEXT:bats:#: {
   msg $chan 10,7Hey, $1 $+ , you're the best.  I hope you're having fun here in $chan because quite frankly we're all delighted and even a bit humbled that you'd hang out here with us.  Keep up the strong chatter.
 }
 
-on *:TEXT:berry:#: { 
-  msg $chan 10,7 $+ $1 $+ , $1 $+ , who will you marry today?  We love you $1 $+ .  Your presence here brings a certain class to $chan and we hope to never let you down in your expectations.
+on $*:TEXT:/^(berry|berrie)$/i:#: { 
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , $1 $+ , who will you marry today?  We love you $1 $+ .  Your presence here brings a certain class to $chan and we hope to never let you down in your expectations.
 }
 
 on *:TEXT:blackjesus:#: { 
-  msg $chan 10,7 $+ $1 $+ , you're a joy to have here.  From TIMTOM, on behalf of all of us here, we'd like to give you great big round of applause for making it this far.  You're a main player in $chan now.  Congrats.
+  msg $chan 10,7 $+ $1 $+ , you're a joy to have here.  From TIMTOM, on behalf of all of us here, we'd like to give you a great big round of applause for making it this far.  You're a main player in $chan now.  Congrats.
 }
 
 on *:TEXT:bzb:#: { 
   msg $chan 10,7Howdy $1 $+ !  You have strong chat views and your commitment to freedom is commendable.  You've earned a proper place here and you're welcome anytime.  Your debates are challenging and shed light on some flaws of $chan that need to be addressed.  We are doing our best to make your experience here and everyone else's an enjoyable one.
 }
 
-on *:TEXT:flamots:#: { 
-  msg $chan 10,7I don't know if we've ever had a chatter of your calibre grace $chan before, and I doubt we ever will.  It was an easy decision to bestow upon you official membership into $chan $+ .  We know you'll stop by often to enrich us with your powerful message and grace us with your precense.  SALUTE!
+on *:TEXT:flamoot:#: { 
+  msg $chan 10,7I don't know if we've ever had a chatter of your calibre grace $chan before, and I doubt we ever will.  It was an easy decision to bestow upon you official membership into $chan $+ .  We know you'll stop by often to enrich us with your powerful message and grace us with your presence.  SALUTE!
 }
 
 on *:TEXT:gamme:#: {
@@ -459,6 +459,10 @@ on *:TEXT:gnol:#: {
 
 on *:TEXT:hlp:#: { 
   msg $chan 10,7 $+ $1 $+ , good friend.  I hope you're having a pleasant stay here at $chan $+ .  If there's anything you need you just give a holler, ya hear?  Love ya $1 $+ .
+}
+
+on *:TEXT:jbs:#: { 
+  msg $chan 10,7 $+ $1 $+ , how are you?  We're so glad one of our Allentown friends decided to join our little shindig here at $chan $+ .  We know you'll come along well here and we hope to see some more of your fine chatter in the years to come.  Have a drink on the house, kid!
 }
 
 on $*:TEXT:/^(luper1|mangluck)$/i:#: { 
@@ -474,11 +478,11 @@ on *:TEXT:matthew:#: {
 }
 
 on *:TEXT:mao:#: { 
-  msg $chan 10,7 $+ $1 $+ : a true friend and a gentle soldier in the army of $chan $+ .  You're rising up the ranks quickly and don't think TIMTOM hasn't noticed.  The works you've achieved are greatly appreciated and for that we present you this humble membership.  We hope you'll accept and continue to do good things for the good of humanity.
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ : a true friend and a gentle soldier in the army of $chan $+ .  You're rising up the ranks quickly and don't think TIMTOM hasn't noticed.  The works you've achieved are greatly appreciated and for that we present you this humble membership.  We hope you'll accept and continue to do good things for the good of humanity.
 }
 
 on *:TEXT:nay:#: { 
-  msg $chan 10,7You've earned it $1 $+ .  You're a big part of $chan $+ .
+  msg $chan 1,8GOLD 10,7You've earned it $1 $+ .  You're a big part of $chan $+ .
 }
 
 on *:TEXT:ninjalie:#: { 
@@ -486,7 +490,7 @@ on *:TEXT:ninjalie:#: {
 }
 
 on *:TEXT:nza:#: { 
-  msg $chan 10,7 $+ $1 $+ , the kind but stern leader.  Your presence here makes $chan feel just a touch more civilized.  Without you we might never have gotten to where we are today.  Stay as long as you wish; there's always a place for you and a hot bowl of soup waiting in $chan $+ .
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , the kind but stern leader.  Your presence here makes $chan feel just a touch more civilized.  Without you we might never have gotten to where we are today.  Stay as long as you wish; there's always a place for you and a hot bowl of soup waiting in $chan $+ .
 }
 
 on *:TEXT:oclet:#: { 
@@ -498,39 +502,43 @@ on *:TEXT:overfien:#: {
 }
 
 on *:TEXT:papersk1n:#: { 
-  msg $chan 10,7What's up $1 $+ ?  You're a tough one to please but it's people like you who make $chan better.  You are a 100% correct chatter and we feel honored that you would chat here.  Your criticisms are always noted and changes are implemented as soon as possible.
+  msg $chan 1,8GOLD 10,7What's up $1 $+ ?  You're a tough one to please but it's people like you who make $chan better.  You are a 100% correct chatter and we feel honored that you would chat here.  Your criticisms are always noted and changes are implemented as soon as possible.
 }
 
 on *:TEXT:phillip:#: { 
   msg $chan 10,7It's been quite some time since you first stepped foot into table, $1 $+ , and I think you've waited long enough.  You did it!  We know there are a few components of $chan that you don't agree with, but we are working to correct them as quickly as possible.  It's people like you who make $chan strive for ultimate perfection.  Our goal is to please and energize you in a safe and enjoyable environment.  Have a spin on us!
 }
 
+on *:TEXT:Bwaah:#: { 
+  msg $chan 10,7 $+ $1 is no longer a member here.
+}
+
 on *:TEXT:sandy_ravage:#: { 
-  msg $chan 10,7Well if it isn't $1 $+ , that really cool chatter!  It's such a joy to have people like $1 sitting down and rooting us on in our successes.  We're all rooting for you too $1 $+ , so don't be afraid to spin that wheel and make it happen!
+  msg $chan 1,8GOLD 10,7Well if it isn't $1 $+ , that really cool chatter!  It's such a joy to have people like $1 sitting down and rooting us on in our successes.  We're all rooting for you too $1 $+ , so don't be afraid to spin that wheel and make it happen!
 }
 
 on *:TEXT:sloth:#: { 
-  msg $chan 10,7Hey $1 $+ .  It's an honor to have you.  Have a good time and take advantage of the relaxing resources we make available to our members.
+  msg $chan 1,8GOLD 10,7Hey $1 $+ .  It's an honor to have you.  Have a good time and take advantage of the relaxing resources we make available to our members.
 }
 
 on *:TEXT:sniper:#: { 
-  msg $chan 10,7 $+ $1 $+ , such a joyous individual.  You can find him spinning and laughing with the guys here in $chan $+ .  It's hard to find a day in $chan without seeing sniper having a good time with friends.  People like sniper really exemplify what $chan is all about: soup, tea, the wheel, and good chats with good close friends.
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , such a joyous individual.  You can find him spinning and laughing with the guys here in $chan $+ .  It's hard to find a day in $chan without seeing sniper having a good time with friends.  People like sniper really exemplify what $chan is all about: soup, tea, the wheel, and good chats with good close friends.
 }
 
 on *:TEXT:turbo:#: { 
-  msg $chan 10,7Hey $1 $+ , did you know that you're a very strong chatter?  Yeah, you are.  You're welcome in $chan anytime and we know you've been supporting us from Day 1 so we support you in all that you do.  Good luck.
+  msg $chan 1,8GOLD 10,7Hey $1 $+ , did you know that you're a very strong chatter?  Yeah, you are.  You're welcome in $chan anytime and we know you've been supporting us from Day 1 so we support you in all that you do.  Good luck.
 }
 
 on *:TEXT:tute:#: { 
-  msg $chan 10,7Is there anyone more delightful than $1 $+ ?  I can't think of anyone off the top of my head.  What an awesome person and just a well-rounded chatter!  We're pleased you sit with us at table in $chan $+ .
+  msg $chan 1,8GOLD 10,7Is there anyone more delightful than $1 $+ ?  I can't think of anyone off the top of my head.  What an awesome person and just a well-rounded chatter!  We're pleased you sit with us at table in $chan $+ .
 }
 
 on *:TEXT:wooster:#: { 
-  msg $chan 10,7 $+ $1 has been a supporter of $chan since Day 1 and we appreciate that.  $1 knows TIMTOM quite well and wears the unofficial cap of "local $chan historian" while displaying fine chatting skills and being just an overall well put-together human being.  Hats off to you $1 $+ !  Have a cup of tea on us!
+  msg $chan 1,8GOLD 10,7 $+ $1 has been a supporter of $chan since Day 1 and we appreciate that.  $1 knows TIMTOM quite well and wears the unofficial cap of "local $chan historian" while displaying fine chatting skills and being just an overall well put-together human being.  Hats off to you $1 $+ !  Have a cup of tea on us!
 }
 
-on *:TEXT:z:#: { 
-  msg $chan 10,7 $+ $1 $+ , you are a wonderful addition to $chan $+ .  I know you'll love stopping in as much as possible and we'll be waiting for you to stop by as well.
+on $*:TEXT:/^(z|capa2)$/i:#: {
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , you are a wonderful addition to $chan $+ .  I know you'll love stopping in as much as possible and we'll be waiting for you to stop by as well.
 }
 
 on *:TEXT:pony:#: { 
@@ -700,4 +708,121 @@ on *:TEXT:unicorn:#: {
   if (%a == 2) msg $chan 0,2Flying through the sky is a magical unicorn for $nick $+ . 4,4.6,6.7,7.11,11.2,2.10,10.9,9.3,3.12,12.5,5.6,6.11,11.
   if (%a == 3) msg $chan 0,12Here comes your very own unicorn, $nick $+ ! 11,11.4,4.7,7.6,6.3,3.10,10.8,8.2,2.6,6.11,11.7,7.9,9.
   if (%a == 4) msg $chan 0,2Hmmm...how about....a.....UNICORN??!! 12,12.3,3.4,4.5,5.6,6.11,11.7,7.6,6.3,3.10,10.8,8.2,2.4,4.
+}
+
+on *:TEXT:end:#: {
+  var %r = $rand(1,17)
+  if (%r == 1) msg $chan 4,11Yes is no.
+  if (%r == 2) msg $chan 8,2The truth is a lie.
+  if (%r == 3) msg $chan 8,1Black is white.
+  if (%r == 4) msg $chan 7,5Weak is strong.
+  if (%r == 5) msg $chan 3,8Love is hate.
+  if (%r == 6) msg $chan 8,2Life is death.
+  if (%r == 7) msg $chan 6,11To win is to lose.
+  if (%r == 8) msg $chan 2,10The beginning is the end.
+  if (%r == 9) msg $chan 4,11First is last.
+  if (%r == 10) msg $chan 1,12All are none.
+  if (%r == 11) msg $chan 7,5Slavery is freedom.
+  if (%r == 12) msg $chan 3,8To be blind is to see.
+  if (%r == 13) msg $chan 8,2Everything is nothing.
+  if (%r == 14) msg $chan 6,11Night is day.
+  if (%r == 15) msg $chan 2,10Day is night.
+  if (%r == 16) msg $chan 4,11Pain is pleasure.
+  if (%r == 17) msg $chan 1,12The best is the worst.
+}
+
+on *:TEXT:*buffelo*:#: { 
+  msg $chan 11,4I WARNED YOU.
+}
+
+on *:TEXT:death:#: { 
+  var %k = $nick($chan,0)
+  var %i = %k + 1
+  var %r = $rand(1,%i)
+  var %a = $rand(1,380)
+  var %b = $rand(1,10)
+  var %c = $rand(1,6)
+  if ((%a == 1) && (%r == %i)) msg $chan 1,4 $+ $nick $+ , you will be consumed by Satan tomorrow.  Tomorrow just isn't your day.  Have several drinks on us!
+  if ((%a == 1) && (%r != %i)) msg $chan 4,11 $+ $nick $+ , you will be slashed by $nick($chan,%r) tomorrow.  I'm sorry.  Have a spin on us.
+  if ((%a != 1) && (%r == %i)) msg $chan 1,4 $+ $nick $+ , you will be slayed by Satan in precisely %a days.  Maybe you can enjoy some Polish water ice afterwards.
+  elseif (%b == 1) {
+    if (%c == 1) msg $chan 0,5 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 0,5 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 0,5 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 0,5 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 0,5 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 0,5 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 2) {
+    if (%c == 1) msg $chan 12,11 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 12,11 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 12,11 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 12,11 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 12,11 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 12,11 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 3) {
+    if (%c == 1) msg $chan 8,5 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 8,5 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 8,5 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 8,5 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 8,5 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 8,5 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 4) {
+    if (%c == 1) msg $chan 7,10 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 7,10 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 7,10 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 7,10 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 7,10 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 7,10 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 5) {
+    if (%c == 1) msg $chan 7,12 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 7,12 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 7,12 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 7,12 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 7,12 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 7,12 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 6) {
+    if (%c == 1) msg $chan 1,8 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 1,8 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 1,8 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 1,8 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 1,8 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 1,8 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 7) {
+    if (%c == 1) msg $chan 8,1 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 8,1 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 8,1 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 8,1 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 8,1 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 8,1 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 8) {
+    if (%c == 1) msg $chan 0,2 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 9,14 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 9,14 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 9,14 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 9,14 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 9,14 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 9) {
+    if (%c == 1) msg $chan 6,9 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 6,9 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 6,9 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 6,9 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 6,9 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 6,9 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
+  elseif (%b == 10) {
+    if (%c == 1) msg $chan 11,2 $+ $nick $+ , you will be stabbed by $nick($chan,%r) in precisely %a days.
+    if (%c == 2) msg $chan 11,2 $+ $nick $+ , you will be shot by $nick($chan,%r) in precisely %a days.
+    if (%c == 3) msg $chan 11,2 $+ $nick $+ , you will be poisoned by $nick($chan,%r) in precisely %a days.
+    if (%c == 4) msg $chan 11,2 $+ $nick $+ , you will be stomped by $nick($chan,%r) in precisely %a days.
+    if (%c == 5) msg $chan 11,2 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
+    if (%c == 6) msg $chan 11,2 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
+  }
 }
