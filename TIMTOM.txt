@@ -34,7 +34,7 @@ on *:TEXT:sex:#: {
   else msg $chan 7,12 $+ $nick $+ , I cannot perform sex on you at this moment.
 }
 
-on *:TEXT:horse:#: { 
+on $*:TEXT:/^(horses?)$/i:#: { 
   msg $chan 3,8 $+ $nick $+ , I like horses too.
 }
 
@@ -42,48 +42,219 @@ on *:TEXT:wheel:#: {
   msg $chan 11,1I think it would be a good idea if $nick would spin the wheel.
 }
 
-on *:TEXT:spin:#:{
+on *:TEXT:money:#: { 
+  msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ $+ %money [ $+ [ $nick ] ] $+ .  Good luck! 
+}
+
+on *:TEXT:spin:#: {
   var %r = $rand(1,40)
-  if (%r == 1) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
-  if (%r == 2) msg $chan 5,12 $+ $nick $+ , you get 5,12$500
-  if (%r == 3) msg $chan 1,7 $+ $nick $+ , you get 1,7$400
-  if (%r == 4) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
-  if (%r == 5) msg $chan 11,6 $+ $nick $+ , you get 8,4$5000!!! $+ 11,6 WOW!!!
-  if (%r == 6) msg $chan 3,7 $+ $nick $+ , you get 3,7$250
-  if (%r == 7) msg $chan 4,1 $+ $nick $+ , you get 4,1$800
-  if (%r == 8) msg $chan 1,7 $+ $nick $+ , you get 1,7$666.  That's scary business.
-  if (%r == 9) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
-  if (%r == 10) msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
-  if (%r == 11) msg $chan 14,4 $+ $nick $+ , you get 14,4$47.  That's ok, it's better than nothing.
-  if (%r == 12) msg $chan 8,9 $+ $nick $+ , you get 8,9$900
-  if (%r == 13) msg $chan 5,7 $+ $nick $+ , you get 5,7$1,000,000!!! THAT'S AMAZING!!!
-  if (%r == 14) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Still better than bankrupt.
-  if (%r == 15) msg $chan 11,10 $+ $nick $+ , you get 11,10$251 
-  if (%r == 16) msg $chan 3,7 $+ $nick $+ , you get 3,7$300
-  if (%r == 17) msg $chan 4,1 $+ $nick $+ , you get 4,1$450
-  if (%r == 18) msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice hefty amount.
-  if (%r == 19) msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
-  if (%r == 20) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
-  if (%r == 21) msg $chan 4,11 $+ $nick $+ , you win a trip to Detroit, Michigan!  Good for you!
-  if (%r == 22) msg $chan 5,12 $+ $nick $+ , you get 5,12$11,000
-  if (%r == 23) msg $chan 1,7 $+ $nick $+ , you get fifty dollars.
-  if (%r == 24) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Let your secret crush spin next.
-  if (%r == 25) msg $chan 11,6 $+ $nick $+ , you get 8,4$999.99!!! $+ 11,6 WOW!!!
-  if (%r == 26) msg $chan 3,7 $+ $nick $+ , you win a trip to Kenya, Africa.
-  if (%r == 27) msg $chan 4,1 $+ $nick $+ , you get 4,1$700
-  if (%r == 28) msg $chan 1,7 $+ $nick $+ , you get 1,7$100.  Maybe you can buy us all tacos later.
-  if (%r == 29) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  I'm 11,6 NOT 8,4sorry about that.
-  if (%r == 30) msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
-  if (%r == 31) msg $chan 14,4 $+ $nick $+ , you get 14,4$680.  Do you remember the time you got a million?  That was crazy.  Not this time though.
-  if (%r == 32) msg $chan 8,9 $+ $nick $+ , you get 8,9$900
-  if (%r == 33) msg $chan 5,7 $+ $nick $+ , you win a trip to Hawaii!!!!
-  if (%r == 34) msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry.
-  if (%r == 35) msg $chan 11,10 $+ $nick $+ , you get 11,10$255 
-  if (%r == 36) msg $chan 3,7 $+ $nick $+ , you get 3,7$390
-  if (%r == 37) msg $chan 4,1 $+ $nick $+ , you get 4,1$000. LOL.
-  if (%r == 38) msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice HEEEEFTY amount.
-  if (%r == 39) msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
-  if (%r == 40) msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+  if (%spin [ $+ [ $nick ] ] != 0) {
+    if (%r == 1) {
+      msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+      /set %money $+ $nick 0
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 2) {
+      msg $chan 5,12 $+ $nick $+ , you get 5,12$500
+      /inc %money $+ $nick 500
+      /unset %spin*
+    }
+    if (%r == 3) {
+      msg $chan 1,7 $+ $nick $+ , you get 1,7$400
+      /inc %money $+ $nick 400
+      /unset %spin*
+    }
+    if (%r == 4) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 5) {
+      msg $chan 11,6 $+ $nick $+ , you get 8,4$5000!!! $+ 11,6 WOW!!!
+      /inc %money $+ $nick 5000
+      /unset %spin*
+    }
+    if (%r == 6) {
+      msg $chan 3,7 $+ $nick $+ , you get 3,7$250
+      /inc %money $+ $nick 250
+      /unset %spin*
+    }
+    if (%r == 7) {
+      msg $chan 4,1 $+ $nick $+ , you get 4,1$800
+      /inc %money $+ $nick 800
+      /unset %spin*
+    }
+    if (%r == 8) {
+      msg $chan 1,7 $+ $nick $+ , you get 1,7$666.  That's scary business.
+      /inc %money $+ $nick 666
+      /unset %spin*
+    }
+    if (%r == 9) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry about that.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 10) {
+      msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
+      /set %money $+ $nick 0
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 11) {
+      msg $chan 14,4 $+ $nick $+ , you get 14,4$47.  That's ok, it's better than nothing.
+      /inc %money $+ $nick 800
+      /unset %spin*
+    }
+    if (%r == 12) {
+      msg $chan 8,9 $+ $nick $+ , you get 8,9$900
+      /inc %money $+ $nick 900
+      /unset %spin*
+    }
+    if (%r == 13) {
+      msg $chan 5,7 $+ $nick $+ , you get 5,7$1,000,000!!! THAT'S AMAZING!!!
+      /inc %money $+ $nick 1000000
+      /unset %spin*
+    }
+    if (%r == 14) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Still better than bankrupt.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 15) {
+      msg $chan 11,10 $+ $nick $+ , you get 11,10$251
+      /inc %money $+ $nick 251
+      /unset %spin*
+    }
+    if (%r == 16) {
+      msg $chan 3,7 $+ $nick $+ , you get 3,7$300
+      /inc %money $+ $nick 300
+      /unset %spin*
+    }
+    if (%r == 17) {
+      msg $chan 4,1 $+ $nick $+ , you get 4,1$450
+      /inc %money $+ $nick 450
+      /unset %spin*
+    }
+    if (%r == 18) {
+      msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice hefty amount.
+      /inc %money $+ $nick 9000
+      /unset %spin*
+    }
+    if (%r == 19) {
+      msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 20) {
+      msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+      /set %money $+ $nick 0
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 21) {
+      msg $chan 4,11 $+ $nick $+ , you win a trip to Detroit, Michigan!  Good for you!
+      /inc %money $+ $nick 5000
+      /unset %spin*
+    }
+    if (%r == 22) {
+      msg $chan 5,12 $+ $nick $+ , you get 5,12$11,000
+      /inc %money $+ $nick 11000
+      /unset %spin*
+    }
+    if (%r == 23) {
+      msg $chan 1,7 $+ $nick $+ , you get fifty dollars.
+      /inc %money $+ $nick 50
+      /unset %spin*
+    }
+    if (%r == 24) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Let your secret crush spin next.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 25) {
+      msg $chan 11,6 $+ $nick $+ , you get 8,4$999.99!!! $+ 11,6 WOW!!!
+      /inc %money $+ $nick 999.99
+      /unset %spin*
+    }
+    if (%r == 26) {
+      msg $chan 3,7 $+ $nick $+ , you win a trip to Kenya, Africa.
+      /inc %money $+ $nick 5000
+      /unset %spin*
+    }
+    if (%r == 27) {
+      msg $chan 4,1 $+ $nick $+ , you get 4,1$700
+      /inc %money $+ $nick 700
+      /unset %spin*
+    }
+    if (%r == 28) {
+      msg $chan 1,7 $+ $nick $+ , you get 1,7$100.  Maybe you can buy us all tacos later.
+      /inc %money $+ $nick 100
+      /unset %spin*
+    }
+    if (%r == 29) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  I'm 11,6 NOT 8,4sorry about that.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 30) {
+      msg $chan 11,6 $+ $nick $+ , you get a BANKRUPT!!!
+      /set %money $+ $nick 0
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 31) {
+      msg $chan 14,4 $+ $nick $+ , you get 14,4$680.  Do you remember the time you got a million?  That was crazy.  Not this time though.
+      /inc %money $+ $nick 680
+      /unset %spin*
+    }
+    if (%r == 32) {
+      msg $chan 8,9 $+ $nick $+ , you get 8,9$900
+      /inc %money $+ $nick 900
+      /unset %spin*
+    }
+    if (%r == 33) {
+      msg $chan 5,7 $+ $nick $+ , you win a trip to Hawaii!!!!
+      /inc %money $+ $nick 5000
+      /unset %spin*
+    }
+    if (%r == 34) {
+      msg $chan 8,4 $+ $nick $+ , you get LOSE A TURN!!  Sorry.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 35) {
+      msg $chan 11,10 $+ $nick $+ , you get 11,10$255 
+      /inc %money $+ $nick 255
+      /unset %spin*
+    }
+    if (%r == 36) {
+      msg $chan 3,7 $+ $nick $+ , you get 3,7$390
+      /inc %money $+ $nick 390
+      /unset %spin*
+    }
+    if (%r == 37) {
+      msg $chan 4,1 $+ $nick $+ , you get 4,1$000. LOL.
+      /unset %spin*
+    }
+    if (%r == 38) {
+      msg $chan 4,14 $+ $nick $+ , you get 4,14$9000.  That's a nice HEEEEFTY amount.
+      /inc %money $+ $nick 9000
+      /unset %spin*
+    }
+    if (%r == 39) {
+      msg $chan 11,6 $+ $nick $+ , you get LOSE A TURN!!  Whoops, I guess the wheel is rigged.
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+    if (%r == 40) {
+      msg $chan 4,11 $+ $nick $+ , you get a BANKRUPT!!!
+      /set %money $+ $nick 0
+      /unset %spin*
+      /set %spin $+ $nick 0
+    }
+  }  
+  else msg $chan 4,11 $+ $nick $+ , please let someone else spin.
 }
 
 on *:TEXT:Alabama:#: { 
@@ -314,12 +485,61 @@ on *:TEXT:tea:#: {
   msg $chan 4,12TIMTOM brings out the hot tea for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  Enjoy friends.  
 }
 
+on 2:TEXT:bong:#: { 
+  var %r = $rand(1,10)
+  if (%r == 1) msg $chan 9,3TIMTOM passes the 1,4bong9,3 to $nick $+ .  Enjoy friend. 
+  if (%r == 2) msg $chan 9,3TIMTOM passes the 1,8bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 3) msg $chan 9,3TIMTOM passes the 12,7bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 4) msg $chan 3,9TIMTOM passes the 13,3bong3,9 to $nick $+ .  Enjoy friend.
+  if (%r == 5) msg $chan 9,3TIMTOM passes the 6,9bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 6) msg $chan 9,3TIMTOM passes the 8,10bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 7) msg $chan 9,3TIMTOM passes the 3,7bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 8) msg $chan 9,3TIMTOM passes the 9,4bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 9) msg $chan 9,3TIMTOM passes the 12,2bong9,3 to $nick $+ .  Enjoy friend.
+  if (%r == 10) msg $chan 9,3TIMTOM passes the 1,4bong9,3 to $nick $+ .  Enjoy friend. 
+}
+
+on 2:TEXT:bong*:#: { 
+  var %r = $rand(1,10)
+  if (%r == 1) msg $chan 8,3 $+ $nick passes the 1,4bong8,3 to $2- $+ .   
+  if (%r == 2) msg $chan 8,3 $+ $nick passes the 1,8bong8,3 to $2- $+ . 
+  if (%r == 3) msg $chan 8,3 $+ $nick passes the 12,7bong8,3 to $2- $+ .  
+  if (%r == 4) msg $chan 3,8 $+ $nick passes the 13,3bong3,8 to $2- $+ .  
+  if (%r == 5) msg $chan 8,3 $+ $nick passes the 6,9bong8,3 to $2- $+ .  
+  if (%r == 6) msg $chan 8,3 $+ $nick passes the 8,10bong8,3 to $2- $+ .  
+  if (%r == 7) msg $chan 8,3 $+ $nick passes the 3,7bong8,3 to $2- $+ .  
+  if (%r == 8) msg $chan 8,3 $+ $nick passes the 9,4bong8,3 to $2- $+ .  
+  if (%r == 9) msg $chan 8,3 $+ $nick passes the 12,2bong8,3 to $2- $+ .  
+  if (%r == 10) msg $chan 8,3 $+ $nick passes the 1,4bong8,3 to $2- $+ .   
+}
+
+
+on *:TEXT:bong*:#: { 
+  msg $chan 3,8Sorry, $nick $+ , you are not allowed to touch the bong.
+}
+
+on 2:TEXT:clean bong:#: {
+  msg $chan 0,7TIMTOM HERE!  That water's looking pretty nasty.  Let me change that for you.
+}
+
+on *:TEXT:clean bong:#: { 
+  msg $chan 3,8Sorry, $nick $+ , you are not allowed to touch the bong.
+}
+
+on *:TEXT:coffee:#: { 
+  msg $chan 2,7TIMTOM brings out the hot coffee for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  Enjoy friends.  
+}
+
 on *:TEXT:more soup:#: { 
   msg $chan 10,4Sorry, $nick $+ , here's some more soup.
 }
 
 on *:TEXT:more tea:#: { 
   msg $chan 1,12Sorry, $nick $+ , here's some more tea.
+}
+
+on *:TEXT:more coffee:#: { 
+  msg $chan 10,8Sorry, $nick $+ , here's some more coffee.
 }
 
 on *:TEXT:jesus:#: { 
@@ -418,7 +638,7 @@ on *:TEXT:keek:#:{
 }
 
 on $*:TEXT:/^(_?qpzdox)$/i:#: { 
-  msg $chan 1,8GOLD 10,7 $+ $1 $+ , you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in $chan $+ .  We want you to have the finer things in life because you give us a such a fine, outstanding example of a human being every day you chat with us.
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , you're a stand up type personality and quite the dedicated chatter to boot.  You'll always have a wheel to spin and a warm tea cup waiting here in $chan $+ .  We want you to have the finer things in life because you give us such a fine, outstanding example of a human being every day you chat with us.
 }
 
 on *:TEXT:aesop:#: { 
@@ -430,7 +650,7 @@ on *:TEXT:avi:#: {
 }
 
 on *:TEXT:bats:#: { 
-  msg $chan 10,7Hey, $1 $+ , you're the best.  I hope you're having fun here in $chan because quite frankly we're all delighted and even a bit humbled that you'd hang out here with us.  Keep up the strong chatter.
+  msg $chan 1,8GOLD 10,7Hey, $1 $+ , you're the best.  I hope you're having fun here in $chan because quite frankly we're all delighted and even a bit humbled that you'd hang out here with us.  Keep up the strong chatter.
 }
 
 on $*:TEXT:/^(berry|berrie)$/i:#: { 
@@ -450,7 +670,7 @@ on *:TEXT:flamoot:#: {
 }
 
 on *:TEXT:gamme:#: {
-  msg $chan 10,7 $+ $1 $+ , without your perseverance and dedication $chan wouldn't be the channel it is today. Keep up the good work and may $chan continue to grow!
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , without your perseverance and dedication $chan wouldn't be the channel it is today. Keep up the good work and may $chan continue to grow!
 }
 
 on *:TEXT:gnol:#: { 
@@ -462,7 +682,7 @@ on *:TEXT:hlp:#: {
 }
 
 on *:TEXT:jbs:#: { 
-  msg $chan 10,7 $+ $1 $+ , how are you?  We're so glad one of our Allentown friends decided to join our little shindig here at $chan $+ .  We know you'll come along well here and we hope to see some more of your fine chatter in the years to come.  Have a drink on the house, kid!
+  msg $chan 1,8GOLD 10,7 $+ $1 $+ , how are you?  We're so glad that you decided to join our little shindig here at $chan $+ .  We know you'll come along well here and we hope to see some more of your fine chatter in the years to come.  Have a drink on the house, kid!
 }
 
 on $*:TEXT:/^(luper1|mangluck)$/i:#: { 
@@ -497,6 +717,10 @@ on *:TEXT:oclet:#: {
   msg $chan 10,7Hey $1 $+ !  We're pleased with you and, yeah, even if you don't care what we think we'd still love you to stick around $chan like you have been.  You're someone that everyone can talk to regardless of the people involved or the situation.  A person like you makes a big difference in $chan $+ .  HOORAH!
 }
 
+on $*:TEXT:/^(timer|dongz?)$/i:#: { 
+  msg $chan 10,7Welcome to the gang, $1 $+ ! You've come a long way since you first sat at table, and I think that every person agrees that you most certainly deserve it.  Cherish it, enjoy yourself here, and never forget the friends who encouraged you along the way.  We hope that you'll be a shining example and a leader to the new members to come.
+}
+
 on *:TEXT:overfien:#: { 
   msg $chan 10,7Hey $1 $+ .  You've flashed some real moments of brilliance and purity here, and we feel this should be rewarded.  Accept this membership as a token of $chan $+ 's appreciation for the person you put out there each and every day.  Stay for a time, stay for life!  $chan will always be here for you.
 }
@@ -510,7 +734,7 @@ on *:TEXT:phillip:#: {
 }
 
 on *:TEXT:Bwaah:#: { 
-  msg $chan 10,7 $+ $1 is no longer a member here.
+  msg $chan 1,8GOLD 10,7Well done $1 $+ .  You're bringing together new friends and having a wonderful time in $chan it seems.  It's time we gave a little back.  Enjoy your newfound membership in $chan $+ !
 }
 
 on *:TEXT:sandy_ravage:#: { 
@@ -590,8 +814,8 @@ on *:TEXT:divorce:#:{
 }
 
 on *:TEXT:what's new:#: {   
-  msg $chan 4,11Hey all!  It's been a joy serving you these past few days.  We are now averaging around 25 people per day which is just fantastic.  Love is in the air as marriages abound and now the occasional taco or piece of cake accompanies that familiar cup of hot tea.  The wheel is still #1 as it should be.    
-  msg $chan 5,11Some of out newest features include: 1,13unicorns!5,11  0,3hedges!5,11  1,7pizza!5,11  and now you can "marry <person>" or "divorce <person>" in addition to marrying or divorcing a random person in the channel.  Keep up the fine chatter and keep those requests coming.  It's our job to serve you.
+  msg $chan 4,11Hey all!  It's been a joy serving you these past few days.  Though we've lost a bit of ground in terms of new memberships, we've all become closer and better good friends and that's what counts here. The wheel is still #1 as it should be.    
+  msg $chan 5,11Some of out newest features include: 1,13death!5,11  0,3life!5,11  1,7piegs!5,11  and after a great deal of fighting, we've finally decided to allow our members to use the word "buffelo".  However, once must include the phrase "msl strip_buf" somewhere in his message in order for TIMTOM to agree.  Enjoy friends.
 }
 
 on *:TEXT:hide:#: {   
@@ -653,7 +877,8 @@ on *:TEXT:hedges:#:{
 }
 
 on *:TEXT:stare:#:{
-  /timer 11 11 msg $chan 4,11TIMTOM IS STARING AT $upper($nick) $+ 
+  msg $chan 4,11TIMTOM IS STARING AT $upper($nick) $+ 
+  /timertowel 10 11 msg $chan 4,11TIMTOM IS STARING AT $upper($nick) $+ 
 }
 
 on *:TEXT:marry*:#:{
@@ -685,7 +910,12 @@ on *:TEXT:divorce*:#:{
 }
 
 on *:TEXT:stare*:#:{
-  /timer 11 11 msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
+  msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
+  /timertowel 10 11 msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
+}
+
+on *:TEXT:stop:#:{
+  /timertowel off
 }
 
 on *:TEXT:tacos:#: { 
@@ -729,10 +959,6 @@ on *:TEXT:end:#: {
   if (%r == 15) msg $chan 2,10Day is night.
   if (%r == 16) msg $chan 4,11Pain is pleasure.
   if (%r == 17) msg $chan 1,12The best is the worst.
-}
-
-on *:TEXT:*buffelo*:#: { 
-  msg $chan 11,4I WARNED YOU.
 }
 
 on *:TEXT:death:#: { 
@@ -825,4 +1051,72 @@ on *:TEXT:death:#: {
     if (%c == 5) msg $chan 11,2 $+ $nick $+ , you will be beaten to death by $nick($chan,%r) in precisely %a days.
     if (%c == 6) msg $chan 11,2 $+ $nick $+ , you will be loved to death by $nick($chan,%r) in precisely %a days.
   }
+}
+
+on *:TEXT:msl strip_buf:#: { 
+  msg $chan 1,4piegs 1,4bifferlo
+}
+
+on *:TEXT:msl strip_buf buffelo:#: { 
+  msg $chan 1,4scalar piegs
+}
+
+on *:TEXT:*msl strip_buf*:#: { 
+  msg $chan $remove($1-,buffelo,msl,strip_buf)
+}
+
+on *:TEXT:*buffelo*:#: { 
+  msg $chan 11,4I WARNED YOU.
+}
+
+on *:TEXT:*pieg*:#: { 
+  msg $chan 1,4scalar piegs
+}
+
+on *:TEXT:life:#: { 
+  var %r = $rand(1,40)
+  if (%r == 1) msg $chan 4,11 $+ $nick gets %r life point.  Sorry :(
+  else msg $chan 4,11 $+ $nick gets %r life points.
+}
+
+on *:TEXT:story:#: { 
+  /set %story 1
+  msg $chan 1,11Hello, $nick $+ , I understand that you would like to hear a story now.  This would be my utmost pleasure.  To begin the story please type "begin".
+}
+
+on *:TEXT:begin:#: { 
+  if (%story == 1) msg $chan 2,7Once upon a time there lived a lucky little boy named Lucky.  His favorite thing to do was to collect springs.  If you want to hear more of the story type "more".
+  else msg $chan 4,11Sorry, friend, you must be in storytime mode to use that command. :(
+  /inc %story 1
+}
+
+on *:TEXT:more:#: { 
+  if (%story == 2) msg $chan 2,7He was a very good boy and always listened to his mommy and daddy.  If you want to hear more of the story type "more".
+  elseif (%story == 3) msg $chan 2,7One day he decided to go for a walk by the Happy Boy Tree.  If you want to hear more of the story type "more".
+  elseif (%story == 4) msg $chan 2,7The tree was very big and full of so many leaves.  If you want to hear more of the story type "more".
+  else msg $chan 4,11Sorry, friend, you must be in storytime mode to use that command. :(
+  /inc %story 1
+}
+
+on $*:TEXT:/^(stoners?)$/i:#: {
+  /set %stoner 1
+  msg $chan 9,3Why hello there good friend!  Thanks for inquiring about the Official #gamme Stoners' Club.  If you would like to become a member please type "1,8yes9,3".  If you do not wish to become a member, or if you are currently a member but no longer want to be one, please type "1,8no9,3".  Only members of the Official #gamme Stoners' Club are allowed to touch the bong.
+}
+
+on *:TEXT:yes:#: {
+  if (%stoner == 1) {
+    /auser 2 $nick 
+    msg $chan 4,11You are now a member of the Official #gamme Stoners' Club.
+  }
+  else msg $chan 1,4scalar piegs
+  /set %stoner 2
+}
+
+on *:TEXT:no:#: {
+  if (%stoner == 1) {
+    /ruser 2 $nick 
+    msg $chan 4,11You are 1,4not4,11 a member of the Official #gamme Stoners' Club.
+  }
+  else msg $chan 1,4bufferlo piegs
+  /set %stoner 2
 }
