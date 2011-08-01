@@ -39,11 +39,37 @@ on $*:TEXT:/^(horses?)$/i:#: {
 }
 
 on *:TEXT:wheel:#: { 
-  msg $chan 11,1I think it would be a good idea if $nick would spin the wheel.
+  if (%spin [ $+ [ $nick ] ] != 0) msg $chan 11,1I think it would be a good idea if $nick would spin the wheel.
+  else msg $chan 4,11 $+ $nick $+ , please let someone else spin.
 }
 
 on *:TEXT:money:#: { 
-  msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ $+ %money [ $+ [ $nick ] ] $+ .  Good luck! 
+  var %k = $replace(%money [ $+ [ $nick ] ],.1,.10,.2,.20,.3,.30,.4,.40,.5,.50,.6,.60,.7,.70,.8,.80,.9.,90)
+  var %r = $rand(1,10)
+  if (. isin $right(%money [ $+ [ $nick ] ],2)) {
+    if (%r == 1) msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ $+ %k $+ .  Good luck! 
+    if (%r == 2) msg $chan 3,8TIMTOM here!  Are you having fun yet, $nick $+ ?  I sure hope you are.  You currently have 3,8$ $+ %k $+ .
+    if (%r == 3) msg $chan 2,10What's the good word, there, $nick $+ ?  It's TIMTOM.  You currently have 2,10$ $+ %k $+ .  Use it wisely.
+    if (%r == 4) msg $chan 6,9Howdy Doodie $nick $+ !  You currently have 6,9$ $+ %k $+ .
+    if (%r == 5) msg $chan 11,7TIMTOM here!  Responding to the one and only $nick $+ .  You currently have 11,7$ $+ %k $+ .
+    if (%r == 6) msg $chan 3,5IT'S SO NICE TO HEAR FROM YOU, $upper($nick) $+ !  Your money, you want to know?  Well, you've got 3,5$ $+ %k $+ .
+    if (%r == 7) msg $chan 8,12TIMTOM here!  Reporting for duty.  $nick $+ , you currently have 8,12$ $+ %k $+ .  Be good.
+    if (%r == 8) msg $chan 1,4Hello! Hello!  You've got 1,4$ $+ %k $+ , $nick $+ .  Very well then!
+    if (%r == 9) msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ %k .  Have a good day.
+    if (%r == 10) msg $chan 10,5TIMTOM here with your bank statement.  You currently have 10,5$ $+ %k $+ .  Good day, partner. 
+  }
+  else {
+    if (%r == 1) msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ $+ %money [ $+ [ $nick ] ] $+ .  Good luck! 
+    if (%r == 2) msg $chan 3,8TIMTOM here!  Are you having fun yet, $nick $+ ?  I sure hope you are.  You currently have 3,8$ $+ %money [ $+ [ $nick ] ] $+ .
+    if (%r == 3) msg $chan 2,10What's the good word, there, $nick $+ ?  It's TIMTOM.  You currently have 2,10$ $+ %money [ $+ [ $nick ] ] $+ .  Use it wisely.
+    if (%r == 4) msg $chan 6,9Howdy Doodie $nick $+ !  You currently have 6,9$ $+ %money [ $+ [ $nick ] ] $+ .
+    if (%r == 5) msg $chan 11,7TIMTOM here!  Responding to the one and only $nick $+ .  You currently have 11,7$ $+ %money [ $+ [ $nick ] ] $+ .
+    if (%r == 6) msg $chan 3,5IT'S SO NICE TO HEAR FROM YOU, $upper($nick) $+ !  Your money, you want to know?  Well, you've got 3,5$ $+ %money [ $+ [ $nick ] ] $+ .
+    if (%r == 7) msg $chan 8,12TIMTOM here!  Reporting for duty.  $nick $+ , you currently have 8,12$ $+ %money [ $+ [ $nick ] ] $+ .  Be good.
+    if (%r == 8) msg $chan 1,4Hello! Hello!  You've got 1,4$ $+ %money [ $+ [ $nick ] ] $+ , $nick $+ .  Very well then!
+    if (%r == 9) msg $chan 1,7Hey, how are you doing, $nick $+ ?  It's TIMTOM.  You currently have 1,7$ $+ %money [ $+ [ $nick ] ] $+ .  Have a good day.
+    if (%r == 10) msg $chan 10,5TIMTOM here with your bank statement.  You currently have 10,5$ $+ %money [ $+ [ $nick ] ] $+ .  Good day, partner. 
+  }
 }
 
 on *:TEXT:spin:#: {
@@ -103,7 +129,7 @@ on *:TEXT:spin:#: {
     }
     if (%r == 11) {
       msg $chan 14,4 $+ $nick $+ , you get 14,4$47.  That's ok, it's better than nothing.
-      /inc %money $+ $nick 800
+      /inc %money $+ $nick 47
       /unset %spin*
     }
     if (%r == 12) {
@@ -557,16 +583,49 @@ on *:TEXT:help:#: {
 
 on *:TEXT:drink:#:{
   var %r = $rand(1,10)
-  if (%r == 1) msg $chan 4,11timtom brings an ice cold beer for $nick $+ 
-  if (%r == 2) msg $chan 8,2timtom pours $nick a shot of whiskey
-  if (%r == 3) msg $chan 8,1timtom pours $nick a shot of bourbon
-  if (%r == 4) msg $chan 7,5timtom pours $nick a glass of lemonade
-  if (%r == 5) msg $chan 3,8timtom brings a bloody mary out for $nick $+ 
-  if (%r == 6) msg $chan 8,2timtom pours $nick a glass of milk
-  if (%r == 7) msg $chan 6,11timtom pours $nick a shot of vodka
-  if (%r == 8) msg $chan 2,10timtom gives $nick a sip from his beer
-  if (%r == 9) msg $chan 4,11timtom pours $nick a shot of Robitussin
-  if (%r == 10) msg $chan 1,12timtom brings $nick a tall glass of water
+  if (%money [ $+ [ $nick ] ] >= 2) {
+    if (%r == 1) {
+      msg $chan 4,11timtom brings an ice cold beer for $nick $+ 
+      /dec %money $+ $nick 2
+    }
+    if (%r == 2) {
+      msg $chan 8,2timtom pours $nick a shot of whiskey
+      /dec %money $+ $nick 2
+    }
+    if (%r == 3) {
+      msg $chan 8,1timtom pours $nick a shot of bourbon
+      /dec %money $+ $nick 2
+    }
+    if (%r == 4) {
+      msg $chan 7,5timtom pours $nick a glass of lemonade
+      /dec %money $+ $nick 2
+    }
+    if (%r == 5) {
+      msg $chan 3,8timtom brings a bloody mary out for $nick $+ 
+      /dec %money $+ $nick 2
+    }
+    if (%r == 6) {
+      msg $chan 8,2timtom pours $nick a glass of milk
+      /dec %money $+ $nick 2
+    }
+    if (%r == 7) {
+      msg $chan 6,11timtom pours $nick a shot of vodka
+      /dec %money $+ $nick 2
+    }
+    if (%r == 8) {
+      msg $chan 2,10timtom gives $nick a sip from his beer
+      /dec %money $+ $nick 2
+    }
+    if (%r == 9) {
+      msg $chan 4,11timtom pours $nick a shot of Robitussin
+      /dec %money $+ $nick 2
+    }
+    if (%r == 10) {
+      msg $chan 1,12timtom brings $nick a tall glass of water
+      /dec %money $+ $nick 2
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to buy a drink.
 }
 
 on *:TEXT:keek:#:{
@@ -766,7 +825,11 @@ on $*:TEXT:/^(z|capa2)$/i:#: {
 }
 
 on *:TEXT:pony:#: { 
-  msg $chan 7,10Finally, $nick gets a pony.
+  if (%money [ $+ [ $nick ] ] >= 1000)  {
+    msg $chan 7,10Finally, $nick gets a pony.
+    /dec %money $+ $nick 1000
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for a pony.  I really want you to have one, though.  Try your luck at the wheel!
 }
 
 on *:TEXT:admissions:#: { 
@@ -845,28 +908,88 @@ on *:TEXT:seek:#:{
 
 on *:TEXT:cake:#: { 
   var %r = $rand(1,10)
-  if (%r == 1) msg $chan 5,11TIMTOM brings $nick some chocolate cake.
-  if (%r == 2) msg $chan 1,8TIMTOM brings $nick some vanilla cake.
-  if (%r == 3) msg $chan 8,1TIMTOM brings $nick some strawberry shortcake.
-  if (%r == 4) msg $chan 1,10Since $nick has been such an angel, TIMTOM brings $nick some angel food cake.
-  if (%r == 5) msg $chan 8,4TIMTOM brings $nick some banana cake.
-  if (%r == 6) msg $chan 8,2TIMTOM brings $nick a bunt cake.
-  if (%r == 7) msg $chan 6,11TIMTOM brings $nick some delicious cheesecake.
-  if (%r == 8) msg $chan 2,10TIMTOM hands $nick a strawberry cupcake.  Enjoy!
-  if (%r == 9) msg $chan 1,4Since $nick has been such a little devil, TIMTOM brings $nick some devil's food cake.
-  if (%r == 10) msg $chan 4,12TIMTOM brings $nick a beautiful slice of marble cake.
+  if (%money [ $+ [ $nick ] ] >= 1.95)  {
+    if (%r == 1) {
+      msg $chan 5,11TIMTOM brings $nick some chocolate cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 2) {
+      msg $chan 1,8TIMTOM brings $nick some vanilla cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 3) {
+      msg $chan 8,1TIMTOM brings $nick some strawberry shortcake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 4) {
+      msg $chan 1,10Since $nick has been such an angel, TIMTOM brings $nick some angel food cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 5) {
+      msg $chan 8,4TIMTOM brings $nick some banana cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 6) {
+      msg $chan 8,2TIMTOM brings $nick a bunt cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 7) {
+      msg $chan 6,11TIMTOM brings $nick some delicious cheesecake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 8) {
+      msg $chan 2,10TIMTOM hands $nick a strawberry cupcake.  Enjoy!
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 9) {
+      msg $chan 1,4Since $nick has been such a little devil, TIMTOM brings $nick some devil's food cake.
+      /dec %money $+ $nick 1.95
+    }
+    if (%r == 10) {
+      msg $chan 4,12TIMTOM brings $nick a beautiful slice of marble cake.
+      /dec %money $+ $nick 1.95
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for a piece of cake.  :(
 }
 
 on *:TEXT:pizza:#: { 
   var %r = $rand(1,8)
-  if (%r == 1) msg $chan 5,11TIMTOM hands $nick a slice of cheese pizza.
-  if (%r == 2) msg $chan 1,8TIMTOM hands $nick a slice of pepperoni pizza.
-  if (%r == 3) msg $chan 8,1TIMTOM hands $nick a slice of sausage pizza.
-  if (%r == 4) msg $chan 8,4TIMTOM hands $nick a slice of ham and pineapple pizza.
-  if (%r == 5) msg $chan 1,13TIMTOM hands $nick a slice of anchovy pizza.
-  if (%r == 6) msg $chan 6,11TIMTOM hands $nick a slice of bacon and black olive pizza.
-  if (%r == 7) msg $chan 2,10TIMTOM hands $nick a slice of extra cheese pizza.  Enjoy!
-  if (%r == 8) msg $chan 4,12TIMTOM hands $nick a slice of white pizza.  Mangia!
+  if (%money [ $+ [ $nick ] ] >= 2.22)  {
+    if (%r == 1) {
+      msg $chan 5,11TIMTOM hands $nick a slice of cheese pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 2) {
+      msg $chan 1,8TIMTOM hands $nick a slice of pepperoni pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 3) {
+      msg $chan 8,1TIMTOM hands $nick a slice of sausage pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 4) {
+      msg $chan 8,4TIMTOM hands $nick a slice of ham and pineapple pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 5) {
+      msg $chan 1,13TIMTOM hands $nick a slice of anchovy pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 6) {
+      msg $chan 6,11TIMTOM hands $nick a slice of bacon and black olive pizza.
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 7) {
+      msg $chan 2,10TIMTOM hands $nick a slice of extra cheese pizza.  Enjoy!
+      /dec %money $+ $nick 2.22
+    }
+    if (%r == 8) {
+      msg $chan 4,12TIMTOM hands $nick a slice of white pizza.  Mangia!
+      /dec %money $+ $nick 2.22
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for a slice of pizza.  :(
 }
 
 on *:TEXT:hedges:#:{
@@ -919,25 +1042,70 @@ on *:TEXT:stop:#:{
 }
 
 on *:TEXT:tacos:#: { 
+  var %o = $nopnick($chan,0)
+  var %c = %o * .79
   var %a = $rand(1,2)
-  if (%a == 1) msg $chan 7,5TIMTOM brings out the crunchy tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
-  if (%a == 2) msg $chan 7,5TIMTOM brings out the soft tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+  if (%money [ $+ [ $nick ] ] >= %c)  {
+    if (%a == 1) {
+      msg $chan 7,5TIMTOM brings out the crunchy tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+      /dec %money $+ $nick %c
+    }    
+    if (%a == 2) {
+      msg $chan 7,5TIMTOM brings out the soft tacos for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+      /dec %money $+ $nick %c
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough to buy tacos for everyone.  It was noble of you to be thinking of everyone though.  Maybe try your luck on the wheel?
 }
 
 on *:TEXT:sauce:#: { 
   var %a = $rand(1,4)
-  if (%a == 1) msg $chan 0,12TIMTOM hands $nick a packet of 1,8MILD0,12 sauce.  
-  if (%a == 2) msg $chan 0,12TIMTOM hands $nick a packet of 1,7HOT0,12 sauce.  
-  if (%a == 3) msg $chan 0,12TIMTOM hands $nick a packet of 1,4FIRE0,12 sauce. 
-  if (%a == 4) msg $chan 0,12TIMTOM places a dollop of 1,3SOUR CREAM0,12 on $nick $+ 's taco. 
+  if (%money [ $+ [ $nick ] ] >= .25)  {
+    if (%a == 1) {
+      msg $chan 0,12TIMTOM hands $nick a packet of 1,8MILD0,12 sauce.
+      /dec %money $+ $nick .25
+    }      
+    if (%a == 2) {
+      msg $chan 0,12TIMTOM hands $nick a packet of 1,7HOT0,12 sauce.  
+      /dec %money $+ $nick .25
+    }  
+    if (%a == 3) {
+      msg $chan 0,12TIMTOM hands $nick a packet of 1,4FIRE0,12 sauce. 
+      /dec %money $+ $nick .25
+    }  
+    if (%a == 4) {
+      msg $chan 0,12TIMTOM places a dollop of 1,3SOUR CREAM0,12 on $nick $+ 's taco.
+      /dec %money $+ $nick .25
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't even have enough to buy sauce.  I'm so sorry. :(  
 }
 
 on *:TEXT:unicorn:#: { 
   var %a = $rand(1,4)
-  if (%a == 1) msg $chan 0,2Suddenly, out pops a beautiful unicorn for $nick $+ . 4,4.8,8.12,12.2,2.9,9.6,6.4,4.5,5.11,11.6,6.7,7.11,11.2,2.  
-  if (%a == 2) msg $chan 0,2Flying through the sky is a magical unicorn for $nick $+ . 4,4.6,6.7,7.11,11.2,2.10,10.9,9.3,3.12,12.5,5.6,6.11,11.
-  if (%a == 3) msg $chan 0,12Here comes your very own unicorn, $nick $+ ! 11,11.4,4.7,7.6,6.3,3.10,10.8,8.2,2.6,6.11,11.7,7.9,9.
-  if (%a == 4) msg $chan 0,2Hmmm...how about....a.....UNICORN??!! 12,12.3,3.4,4.5,5.6,6.11,11.7,7.6,6.3,3.10,10.8,8.2,2.4,4.
+  if (%money [ $+ [ $nick ] ] >= 5000)  {
+    if (%a == 1) {
+      msg $chan 0,2Suddenly, out pops a beautiful unicorn for $nick $+ . 4,4.8,8.12,12.2,2.9,9.6,6.4,4.5,5.11,11.6,6.7,7.11,11.2,2.  
+      /dec %money $+ $nick 5000
+    }  
+    if (%a == 2) {
+      msg $chan 0,2Flying through the sky is a magical unicorn for $nick $+ . 4,4.6,6.7,7.11,11.2,2.10,10.9,9.3,3.12,12.5,5.6,6.11,11.
+      /dec %money $+ $nick 5000
+    } 
+    if (%a == 3) {
+      msg $chan 0,12Here comes your very own unicorn, $nick $+ ! 11,11.4,4.7,7.6,6.3,3.10,10.8,8.2,2.6,6.11,11.7,7.9,9.
+      /dec %money $+ $nick 5000
+    } 
+    if (%a == 4) {
+      msg $chan 0,2Hmmm...how about....a.....UNICORN??!! 12,12.3,3.4,4.5,5.6,6.11,11.7,7.6,6.3,3.10,10.8,8.2,2.4,4.
+      /dec %money $+ $nick 5000
+    } 
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't even have enough just yet for a unicorn.  I know, unicorns are expensive, but they are well worth it in the end.  Hopefully you'll have enough to buy one soon.
+}
+
+on *:TEXT:prices:#: { 
+  msg $chan 5,10Hello $nick $+ !  These are the current market prices in $chan $+ :  drinks are 5,10$2 a piece, cake is 5,10$1.95 a piece, and pizza is 5,10$2.22 a slice.  Tacos are 5,10$.79 5,10/ person, and sauce is 5,10$.25 extra.  A pony will cost you 5,10$1000 and a unicorn will cost you 5,10$5000.  As always; soup, coffee, and tea are free; as are all of our other services.  Enjoy!
 }
 
 on *:TEXT:end:#: {
