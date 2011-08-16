@@ -1543,7 +1543,7 @@ on *:TEXT:bet &:#:{
       }
       /set %total $+ $nick %card1 [ $+ [ $nick ] ] 
       /inc %total $+ $nick %card2 [ $+ [ $nick ] ]
-      if ((%card1 [ $+ [ $nick ] ] == 11) && (%card2 [ $+ [ $nick ] ] == 10) || (%card1 [ $+ [ $nick ] ] == 10) && (%card2 [ $+ [ $nick ] ] == 11)) {
+      if (((%card1 [ $+ [ $nick ] ] == 11) && (%card2 [ $+ [ $nick ] ] == 10)) || ((%card1 [ $+ [ $nick ] ] == 10) && (%card2 [ $+ [ $nick ] ] == 11))) {
         msg $chan 5,7Ok, great, let's get started then, $nick $+ !  I'll deal out the cards.  Dealer shows %ddealer1 [ $+ [ $nick ] ] $+ .  You've got %ccard1 [ $+ [ $nick ] ] and %ccard2 [ $+ [ $nick ] ] $+ .  This gives you %total [ $+ [ $nick ] ] $+ !  YOU GOT 4,11BLACKJACK5,7!!!!  Congratulations $nick $+ !  Dealer pays 5,7$ $+ %bet [ $+ [ $nick ] ] and you also receive 35 bonus 0,2UNICORNS!!!!! 4,11YAY!!!!
         /inc %money $+ $nick %bet [ $+ [ $nick ] ]
         /inc %money $+ $nick %bet [ $+ [ $nick ] ]
@@ -1652,7 +1652,7 @@ on *:TEXT:stand:#:{
     /set %dealerbj $+ $nick 2
     /set %dealertotal $+ $nick %dealer1 [ $+ [ $nick ] ] 
     /inc %dealertotal $+ $nick %dealer2 [ $+ [ $nick ] ]
-    if ((%dealer1 [ $+ [ $nick ] ] == 11) && (%dealer2 [ $+ [ $nick ] ] == 10) || (%dealer1 [ $+ [ $nick ] ] == 10) && (%dealer2 [ $+ [ $nick ] ] == 11)) {
+    if (((%dealer1 [ $+ [ $nick ] ] == 11) && (%dealer2 [ $+ [ $nick ] ] == 10)) || ((%dealer1 [ $+ [ $nick ] ] == 10) && (%dealer2 [ $+ [ $nick ] ] == 11))) {
       msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  Awww, shucks, I got blackjack.  I'm sorry.  Dealer takes 11,2$ $+ %bet [ $+ [ $nick ] ] $+ .  Ya know what, though, here's 1 bonus 7,10PONY 11,2since I feel so bad about the whole thing.
       /inc %pony $+ $nick 1
       /unset %blackjack $+ $nick
@@ -1670,7 +1670,7 @@ on *:TEXT:stand:#:{
       /set %ddealertotal $+ $nick 2
       /set %dealertotal $+ $nick 12 
     }
-    elseif ((%card1 [ $+ [ $nick ] ] == 11) || (%card2 [ $+ [ $nick ] ] == 11)) {
+    elseif ((%dealer1 [ $+ [ $nick ] ] == 11) || (%dealer2 [ $+ [ $nick ] ] == 11)) {
       /set %ddealertotal $+ $nick %dealertotal [ $+ [ $nick ] ] 
       /dec %ddealertotal $+ $nick 10
       if (%dealertotal [ $+ [ $nick ] ] <= 16) msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  So that's %ddealertotal [ $+ [ $nick ] ] or %dealertotal [ $+ [ $nick ] ] $+ .  I better hit!
@@ -1739,7 +1739,7 @@ on *:TEXT:stand:#:{
       }
       elseif ((%dealer [ $+ [ [ %dealerbj [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] == 11) && (%ddealertotal [ $+ [ $nick ] ] != $null) && (%dealertotal [ $+ [ $nick ] ] >= 22) && (%dealertotal [ $+ [ $nick ] ] <= 26))  {
         /dec %dealertotal $+ $nick 10
-        /set %ddealertotal $+ $nick %total [ $+ [ $nick ] ]
+        /set %ddealertotal $+ $nick %dealertotal [ $+ [ $nick ] ]
         /dec %ddealertotal $+ $nick 10
         msg $chan 11,2Dealer gets %ddealer [ $+ [ [ %dealerbj [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  So that's %ddealertotal [ $+ [ $nick ] ] or %dealertotal [ $+ [ $nick ] ] $+ .  I'd best be hittin'!
         /inc %dealerbj $+ $nick 1
