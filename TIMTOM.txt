@@ -785,8 +785,8 @@ on *:TEXT:noodle:#: {
   msg $chan 1,8GOLD 10,7How are you, friend?  We're so glad you found us here in $chan $+ !  I hope you're having a marvelous time spinning the wheel with us, chatting, and enjoying all of our other services.  We hope you'll make $chan home, $1 $+ .  Spin with ya soon, buddy!
 }
 
-on *:TEXT:nigamajiga:#: { 
-  msg $chan 10,7Greetings $1 $+ .  What a friendly, thoughtful, and creative individual you are!  We are blessed to have you as part of the $chan team.  You are a grand participant in the sharing of ideas and insights, and we appreciate that.  Keep them unicorns a-comin'!!!
+on $*:TEXT:/^(nigamajiga?)$/i:#: { 
+  msg $chan 1,8GOLD 10,7Greetings $1 $+ .  What a friendly, thoughtful, and creative individual you are!  We are blessed to have you as part of the $chan team.  You are a grand participant in the sharing of ideas and insights, and we appreciate that.  Keep them unicorns a-comin'!!!
 }
 
 on *:TEXT:nza:#: { 
@@ -861,13 +861,13 @@ on $*:TEXT:/^(my unicorns?)$/i:#: {
 
 on $*:TEXT:/^(my pony|my ponies)$/i:#: {
   if ((%pony [ $+ [ $nick ] ] == 0) || (%pony [ $+ [ $nick ] ] == $null)) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Right now you don't have any ponies.  I really want you to get one though!!
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Right now you don't have any ponies.  I really want you to get one though!!
   }
   elseif (%pony [ $+ [ $nick ] ] == 1) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently you have 1 pony.  Do you love your pony?
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently you have 1 pony.  Do you love your pony?
   }
   else {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently you have %pony [ $+ [ $nick ] ] ponies.
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently you have %pony [ $+ [ $nick ] ] ponies.
   }
 }
 
@@ -939,28 +939,213 @@ on *:TEXT:what's new:#: {
 }
 
 on *:TEXT:hide:#: {   
+  /set %hide 1
+  /unset %red*
+  /unset %blue*
+  /unset %yellow*
+  /unset %bblue*
+  /unset %mayo*
+  /unset %out*
   msg $chan 1,13TIMTOM has lost control of his 5 favorite colors:  4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7...........  1,13They've gone and hid on everyone in $chan $+ !  We need to find them quick!  
 }
 
 on *:TEXT:seek:#:{
-  var %k = $nick($chan,0)
-  var %j = %k + 2
-  var %i = %k + 1
-  var %r = $rand(1,%j)
-  var %a = $rand(1,5)
-  if (%r == %j) msg $chan 1,13 $+ $nick finds: 1,4Satan, Destroyer of Souls 1,13Sorry, $nick $+ , you're out for this game.  Better luck next game!
-  elseif (%r == %i) { 
-    if (%a == 1) msg $chan 1,13 $+ $nick finds: 1,4ChanServ 1,13Hey Channel Servant!  You're looking rather ravishing in 1,4RED1,13?
-    if (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11ChanServ 1,13That shade of 1,11BLUE1,13 really toots you well!  Toot toot!
-    if (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8ChanServ  1,13You're an owl here in your 1,8YELLOW1,13 gear!
-    if (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12ChanServ  1,13Your chives are as deep as the deep 0,12BLUE1,13 sea.
-    if (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master struttin' around in those 1,7MAYONAISE1,13 colored shoes!
-  }  
-  elseif (%a == 1) msg $chan 1,13 $+ $nick finds: 1,4 $+ $nick($chan,%r) $+  1,13Well aren't you looking ravishing in 1,4RED1,13?
-  elseif (%a == 2) msg $chan 1,13 $+ $nick finds: 1,11 $+ $nick($chan,%r) $+  1,13That shade of 1,11BLUE1,13 really suits you well.
-  elseif (%a == 3) msg $chan 1,13 $+ $nick finds: 1,8 $+ $nick($chan,%r) $+  1,13You're a star here in your 1,8YELLOW1,13 gear!
-  elseif (%a == 4) msg $chan 1,13 $+ $nick finds: 0,12 $+ $nick($chan,%r) $+  1,13Your eyes are as deep as the deep 0,12BLUE1,13 sea.
-  elseif (%a == 5) msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) struttin' around in those 1,7MAYONAISE1,13 colored shoes!
+  if (%hide == 1) {
+    if (%out [ $+ [ $nick ] ] != 1) {
+      var %k = $nick($chan,0)
+      var %j = %k + 2
+      var %i = %k + 1
+      var %r = $rand(1,%j)
+      var %a = $rand(1,5)
+      if (%r == %j) {
+        msg $chan 1,13 $+ $nick finds: 1,4Satan, Destroyer of Souls 1,13Sorry, $nick $+ , you're out for this game.  Better luck next game!
+        /set %out $+ $nick 1
+      }
+      elseif (%r == %i) { 
+        if (%a == 1) {
+          if ((%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1) || (%mayo [ $+ [ $nick ] ] != 1)) {
+            msg $chan 1,13 $+ $nick finds: 1,4ChanServ 1,13Hey Channel Servant!  You're looking rather ravishing in 1,4RED1,13!
+            /set %red $+ $nick 1
+          }
+          else {
+            msg $chan 1,13 $+ $nick finds: 1,4ChanServ 1,13Hey Channel Servant!  You're looking rather ravishing in 1,4RED1,13!
+            msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+            /inc %pony $+ $nick 20
+            /unset %red*
+            /unset %blue*
+            /unset %yellow*
+            /unset %bblue*
+            /unset %mayo*
+            /unset %out*
+            /unset %hide
+          }
+        }
+        if (%a == 2) {
+          if ((%red [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1) || (%mayo [ $+ [ $nick ] ] != 1)) {
+            msg $chan 1,13 $+ $nick finds: 1,11ChanServ 1,13That shade of 1,11BLUE1,13 really toots you well!  Toot toot!
+            /set %blue $+ $nick 1
+          }
+          else {
+            msg $chan 1,13 $+ $nick finds: 1,11ChanServ 1,13That shade of 1,11BLUE1,13 really toots you well!  Toot toot!
+            msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+            /inc %pony $+ $nick 20
+            /unset %red*
+            /unset %blue*
+            /unset %yellow*
+            /unset %bblue*
+            /unset %mayo*
+            /unset %out*
+            /unset %hide
+          }
+        }
+        if (%a == 3) {
+          if ((%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1) || (%mayo [ $+ [ $nick ] ] != 1)) {
+            msg $chan 1,13 $+ $nick finds: 1,8ChanServ  1,13You're an owl here in your 1,8YELLOW1,13 gear!
+            /set %yellow $+ $nick 1
+          }
+          else {
+            msg $chan 1,13 $+ $nick finds: 1,8ChanServ  1,13You're an owl here in your 1,8YELLOW1,13 gear!
+            msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+            /inc %pony $+ $nick 20
+            /unset %red*
+            /unset %blue*
+            /unset %yellow*
+            /unset %bblue*
+            /unset %mayo*
+            /unset %out*
+            /unset %hide
+          }
+        }
+        if (%a == 4) {
+          if ((%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%mayo [ $+ [ $nick ] ] != 1)) {
+            msg $chan 1,13 $+ $nick finds: 0,12ChanServ  1,13Your chives are as deep as the deep 0,12BLUE1,13 sea.
+            /set %bblue $+ $nick 1
+          }
+          else {
+            msg $chan 1,13 $+ $nick finds: 0,12ChanServ  1,13Your chives are as deep as the deep 0,12BLUE1,13 sea.
+            msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+            /inc %pony $+ $nick 20
+            /unset %red*
+            /unset %blue*
+            /unset %yellow*
+            /unset %bblue*
+            /unset %mayo*
+            /unset %out*
+            /unset %hide
+          }
+        }
+        if (%a == 5) {
+          if ((%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1)) {
+            msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master struttin' around in those 1,7MAYONAISE1,13 colored shoes!
+            /set %mayo $+ $nick 1
+          }
+          else {
+            msg $chan 1,13 $+ $nick finds: 1,7ChanServ  1,13Check out the channel master struttin' around in those 1,7MAYONAISE1,13 colored shoes!
+            msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+            /inc %pony $+ $nick 20
+            /unset %red*
+            /unset %blue*
+            /unset %yellow*
+            /unset %bblue*
+            /unset %mayo*
+            /unset %out*
+            /unset %hide
+          }
+        }
+      }  
+      elseif (%a == 1) {
+        if ((%mayo [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1)) {
+          msg $chan 1,13 $+ $nick finds: 1,4 $+ $nick($chan,%r) $+  1,13Well aren't you looking ravishing in 1,4RED1,13?
+          /set %red $+ $nick 1
+        }
+        else {
+          msg $chan 1,13 $+ $nick finds: 1,4 $+ $nick($chan,%r) $+  1,13Well aren't you looking ravishing in 1,4RED1,13?
+          msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+          /inc %pony $+ $nick 20
+          /unset %red*
+          /unset %blue*
+          /unset %yellow*
+          /unset %bblue*
+          /unset %mayo*
+          /unset %out*
+          /unset %hide
+        }
+      }
+      elseif (%a == 2) {
+        if ((%mayo [ $+ [ $nick ] ] != 1) || (%red [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1)) {
+          msg $chan 1,13 $+ $nick finds: 1,11 $+ $nick($chan,%r) $+  1,13That shade of 1,11BLUE1,13 really suits you well.
+          /set %blue $+ $nick 1
+        }
+        else {
+          msg $chan 1,13 $+ $nick finds: 1,11 $+ $nick($chan,%r) $+  1,13That shade of 1,11BLUE1,13 really suits you well.
+          msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+          /inc %pony $+ $nick 20
+          /unset %red*
+          /unset %blue*
+          /unset %yellow*
+          /unset %bblue*
+          /unset %mayo*
+          /unset %out*
+          /unset %hide
+        }
+      }
+      elseif (%a == 3) {
+        if ((%mayo [ $+ [ $nick ] ] != 1) || (%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%bblue [ $+ [ $nick ] ] != 1)) {
+          msg $chan 1,13 $+ $nick finds: 1,8 $+ $nick($chan,%r) $+  1,13You're a star here in your 1,8YELLOW1,13 gear!
+          /set %yellow $+ $nick 1
+        }
+        else {
+          msg $chan 1,13 $+ $nick finds: 1,8 $+ $nick($chan,%r) $+  1,13You're a star here in your 1,8YELLOW1,13 gear!
+          msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+          /inc %pony $+ $nick 20
+          /unset %red*
+          /unset %blue*
+          /unset %yellow*
+          /unset %bblue*
+          /unset %mayo*
+          /unset %out*
+          /unset %hide
+        }
+      }
+      elseif (%a == 4) {
+        if ((%mayo [ $+ [ $nick ] ] != 1) || (%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1)) {
+          msg $chan 1,13 $+ $nick finds: 0,12 $+ $nick($chan,%r) $+  1,13Your eyes are as deep as the deep 0,12BLUE1,13 sea.
+          /set %bblue $+ $nick 1
+        }
+        else {
+          msg $chan 1,13 $+ $nick finds: 0,12 $+ $nick($chan,%r) $+  1,13Your eyes are as deep as the deep 0,12BLUE1,13 sea.
+          msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+          /inc %pony $+ $nick 20
+          /unset %red*
+          /unset %blue*
+          /unset %yellow*
+          /unset %bblue*
+          /unset %mayo*
+          /unset %out*
+          /unset %hide
+        }
+      }
+      elseif (%a == 5) {
+        if ((%bblue [ $+ [ $nick ] ] != 1) || (%red [ $+ [ $nick ] ] != 1) || (%blue [ $+ [ $nick ] ] != 1) || (%yellow [ $+ [ $nick ] ] != 1)) {
+          msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) struttin' around in those 1,7MAYONAISE1,13 colored shoes!
+          /set %mayo $+ $nick 1
+        }
+        else {
+          msg $chan 1,13 $+ $nick finds: 1,7 $+ $nick($chan,%r) $+  1,13Check out $nick($chan,%r) struttin' around in those 1,7MAYONAISE1,13 colored shoes!
+          msg $chan 5,11Awesome work, $nick $+ , you win!!!  You found 4,4.......... , 11,11.......... , 8,8.......... , 12,12.......... , and 7,7........... 5,11Here's 20 7,10ponies5,11 to add to your collection.
+          /inc %pony $+ $nick 20
+          /unset %red*
+          /unset %blue*
+          /unset %yellow*
+          /unset %bblue*
+          /unset %mayo*
+          /unset %out*
+          /unset %hide
+        }
+      }
+    }
+    else msg $chan 4,11Sorry, $nick $+ , you're out for this game.
+  }
 }
 
 on *:TEXT:cake:#: { 
@@ -1092,10 +1277,6 @@ on *:TEXT:divorce*:#:{
 on *:TEXT:stare*:#:{
   msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
   /timertowel 10 11 msg $chan 4,11TIMTOM IS STARING AT $upper($2-) $+ 
-}
-
-on *:TEXT:stop:#:{
-  /timertowel off
 }
 
 on *:TEXT:tacos:#: { 
@@ -1388,25 +1569,25 @@ on *:TEXT:& unicorns:#: {
 
 on *:TEXT:& pony:#: {
   if ((%pony [ $+ [ $1 ] ] == 0) || (%pony [ $+ [ $1 ] ] == $null)) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Right now $1 doesn't have any ponies.  We're all pulling for $1 right now!!
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Right now $1 doesn't have any ponies.  We're all pulling for $1 right now!!
   }
   elseif (%pony [ $+ [ $1 ] ] == 1) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has 1 pony.  What a cute little pony!
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has 1 pony.  What a cute little pony!
   }
   else {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has %pony [ $+ [ $1 ] ] ponies.
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has %pony [ $+ [ $1 ] ] ponies.
   }
 }
 
 on *:TEXT:& ponies:#: {
   if ((%pony [ $+ [ $1 ] ] == 0) || (%pony [ $+ [ $1 ] ] == $null)) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Right now $1 doesn't have any ponies.  We're all pulling for $1 right now!!
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Right now $1 doesn't have any ponies.  We're all pulling for $1 right now!!
   }
   elseif (%pony [ $+ [ $1 ] ] == 1) {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has 1 pony.  What a cute little pony!
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has 1 pony.  What a cute little pony!
   }
   else {
-    msg $chan 3,11HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has %pony [ $+ [ $1 ] ] ponies.
+    msg $chan 8,12HELLO HELLO HELLO HELLO $nick $+ !  Currently $1 has %pony [ $+ [ $1 ] ] ponies.
   }
 }
 
@@ -1457,9 +1638,11 @@ on *:TEXT:blackjack:#:{
 }
 
 on *:TEXT:bet &:#:{
-  if ((%blackjack [ $+ [ $nick ] ] == 2) && ($2 >= 5000) && ($2 <= 20000) && (. !isin $2)) {
+  if ((%blackjack [ $+ [ $nick ] ] == 2) && (($2 < 5000) || ($2 > 20000))) msg $chan 4,11 $+ $nick $+ , the min bet is 4,11$5000 and the max bet is 4,11$20,000.
+  elseif ((%blackjack [ $+ [ $nick ] ] == 2) && ($2 >= 5000) && ($2 <= 20000) && (. isin $2)) msg $chan 4,11Please, $nick $+ , only whole dollar bets.
+  elseif ((%blackjack [ $+ [ $nick ] ] == 2) && ($2 >= 5000) && ($2 <= 20000) && (. !isin $2)) {
     if (%money [ $+ [ $nick ] ] >= $2) {
-      /set %bet $+ $nick $2
+      /set %bet $+ $nick $calc($2)
       /dec %money $+ $nick %bet [ $+ [ $nick ] ]
       /set %dealer1 $+ $nick $rand(1,13)
       /set %dealer2 $+ $nick $rand(1,13)
@@ -1601,7 +1784,8 @@ on *:TEXT:hit:#:{
     }
     /inc %total $+ $nick %card [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ]
     if ((%card [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] != 11) && (%ttotal [ $+ [ $nick ] ] == $null) && (%total [ $+ [ $nick ] ] >= 22)) {
-      msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you %total [ $+ [ $nick ] ] $+ .  Sorry $nick :( :(  You busted.  Dealer takes 1,13$ $+ %bet [ $+ [ $nick ] ] $+ .  Better luck next game.
+      msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you %total [ $+ [ $nick ] ] $+ .  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ %bet [ $+ [ $nick ] ] into the pot.  Better luck next game.
+      /inc %pot %bet [ $+ [ $nick ] ]
       /unset %blackjack $+ $nick
       /unset %bet $+ $nick 
       /unset %dealer* $+ $nick 
@@ -1628,7 +1812,8 @@ on *:TEXT:hit:#:{
       /inc %blackjack $+ $nick 1
     }
     elseif (%total [ $+ [ $nick ] ] == 32) {
-      msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you 22.  Sorry $nick :( :(  You busted.  Dealer takes 1,13$ $+ %bet [ $+ [ $nick ] ] $+ .  Why did you hit on 21??!!
+      msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you 22.  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ %bet [ $+ [ $nick ] ] into the pot.  Why did you hit on 21??!!
+      /inc %pot %bet [ $+ [ $nick ] ]
       /unset %blackjack $+ $nick
       /unset %bet $+ $nick 
       /unset %dealer* $+ $nick 
@@ -1653,8 +1838,9 @@ on *:TEXT:stand:#:{
     /set %dealertotal $+ $nick %dealer1 [ $+ [ $nick ] ] 
     /inc %dealertotal $+ $nick %dealer2 [ $+ [ $nick ] ]
     if (((%dealer1 [ $+ [ $nick ] ] == 11) && (%dealer2 [ $+ [ $nick ] ] == 10)) || ((%dealer1 [ $+ [ $nick ] ] == 10) && (%dealer2 [ $+ [ $nick ] ] == 11))) {
-      msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  Awww, shucks, I got blackjack.  I'm sorry.  Dealer takes 11,2$ $+ %bet [ $+ [ $nick ] ] $+ .  Ya know what, though, here's 1 bonus 7,10PONY 11,2since I feel so bad about the whole thing.
+      msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  Awww, shucks, I got blackjack.  I'm sorry.  Dealer puts 11,2$ $+ %bet [ $+ [ $nick ] ] into the pot.  Ya know what, though, here's 1 bonus 7,10PONY 11,2since I feel so bad about the whole thing.
       /inc %pony $+ $nick 1
+      /inc %pot %bet [ $+ [ $nick ] ]
       /unset %blackjack $+ $nick
       /unset %bet $+ $nick 
       /unset %dealer* $+ $nick 
@@ -1779,7 +1965,8 @@ on *:TEXT:stand:#:{
       /unset %dealertotal $+ $nick
     }
     elseif (%dealertotal [ $+ [ $nick ] ] > %total [ $+ [ $nick ] ]) {
-      msg $chan 8,5Ah well, I won.  I hate to have to do it to you, $nick $+ , but I'm going to have to take 8,5$ $+ %bet [ $+ [ $nick ] ] from you.  :(  I hope you play again sometime and have better luck.
+      msg $chan 8,5Ah well, I won.  I hate to have to do it to you, $nick $+ , but I'm going to have to take 8,5$ $+ %bet [ $+ [ $nick ] ] from you and put it into the pot.  :(  I hope you play again sometime and have better luck.
+      /inc %pot %bet [ $+ [ $nick ] ]
       /unset %blackjack $+ $nick
       /unset %card* $+ $nick
       /unset %ccard* $+ $nick
@@ -1805,6 +1992,175 @@ on *:TEXT:stand:#:{
       /unset %dealer* $+ $nick 
       /unset %ddealer* $+ $nick
       /unset %dealertotal $+ $nick
+    }
+  }
+}
+
+on *:TEXT:pot:#:{
+  if ((%pot == $null) || (%pot == 0)) msg $chan 4,11The pot is currently empty.
+  else msg $chan 4,11The pot is currently at 4,11$ $+ %pot $+ .  Somebody better win it soon!
+}
+
+on $*:TEXT:/^(guess|guess a number)$/i:#: {
+  if (%eguess [ $+ [ $nick ] ] != 1) {
+    /set %guess $+ $nick 1
+    msg $chan 13,2Hey $nick $+ .  I'm thinking of a number between 1 and 20.  You have 5 tries to guess it.  Figure it out and you win THE POT!!!!!  Miss it, and you're 11,6BANKRUPT!!!!!
+    /set %number $+ $nick $rand(1,20)
+  }
+  else msg $chan 4,11Sorry, $nick $+ , you need to finish the game you started. >:D
+}
+
+on *:TEXT:dice:#:{
+  if (%edice != 1) {
+    /set %dice1 $rand(1,6)
+    /set %dice2 $rand(1,6)
+    /set %dicetotal %dice1
+    /inc %dicetotal %dice2
+    /set %dice 1
+    msg $chan 1,7Welcome to dice!  My name is TIMTOM and I will be throwing one pair of dice.  Everyone is encouraged to make bets on the total value.  The totals range from 2 to 12.  The min bet is 1,7$5000 and the max bet is 1,7$20,000 (only whole dollar amounts please).  The betting syntax is "bet 5000 on 7" for example.  The payouts are: 35:1 on 2 or 12, 17:1 on 3 or 11, 11:1 on 4 or 10, 8:1 on 5 or 9, 6:1 on 6 or 8, and 5:1 on 7.  
+    msg $chan 4,11Please make your bets now.  You can bet on as many numbers as you'd like, but please make only one bet per number.  TIMTOM gets confused easily ;P
+    /timerdice1 1 5 msg $chan 1,7Let's get those bets in friends!
+    /timerdice2 1 10 msg $chan 01,0730 seconds to get those bets in!
+    /timerdice3 1 20 msg $chan 01,0720 seconds to bet and counting!  Hurry hurry hurry!
+    /timerdice4 1 30 msg $chan 08,0410 seconds to bet!!!!!  Last call!!!!!  Get em in, friends!!!!!
+    /timerdice5 1 40 msg $chan 1,7Ok, all bets are in!
+    /timerdice6 1 40 msg $chan 1,7I rolled %dice1 and %dice2 for a total of %dicetotal $+ ...Calculating payoffs....Please wait a moment....
+    /timerdice7 1 40 /unset %dice
+    /timerdice8 1 80 msg $chan 2,8Thanks for playing dice, friends!  I'll be waiting for you to play again real soon!
+    /timerdice9 1 80 /unset %edice
+  }
+}
+
+on *:TEXT:bet & on &:#:{
+  if (((%dice == 1) && ($4 >= 2) && ($4 <= 12) && (. !isin $4)) && (($2 < 5000) || ($2 > 20000))) msg $chan 4,11 $+ $nick $+ , the min bet is 4,11$5000 and the max bet is 4,11$20,000.
+  elseif ((%dice == 1) && ($2 >= 5000) && ($2 <= 20000) && (. isin $2) && ($4 >= 2) && ($4 <= 12) && (. !isin $4)) msg $chan 4,11Please, $nick $+ , only whole dollar bets. :)
+  elseif ((%dice == 1) && (($4 < 2) || ($4 > 12) || (. isin $4))) msg $chan 4,11Sorry, $nick $+ , that is not a valid dice total.  Use whole numbers ranging from 2 to 12.
+  elseif ((%dice == 1) && ($2 >= 5000) && ($2 <= 20000) && (. !isin $2) && ($4 >= 2) && ($4 <= 12) && (. !isin $4)) {
+    if ((%dicetotal == $4) && (%money [ $+ [ $nick ] ] >= $2) && (%bet [ $+ [ $4 [ $+ [ $nick ] ] ] ] != 1)) {
+      /set %edice 1
+      /set %bet $+ $4 $+ $nick 1
+      msg $chan 4,11 $+ $nick bets 4,11$ $+ $calc($2) on $calc($4) $+ .
+      /dec %money $+ $nick $2
+      if ((%dicetotal == 2) || (%dicetotal == 12)) {
+        /var %d = 35 * $2      
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 35:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+      if ((%dicetotal == 3) || (%dicetotal == 11)) { 
+        /var %d = 17 * $2     
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 17:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+      if ((%dicetotal == 4) || (%dicetotal == 10)) { 
+        /var %d = 11 * $2     
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 11:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+      if ((%dicetotal == 5) || (%dicetotal == 9)) {   
+        /var %d = 8 * $2   
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 8:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+      if ((%dicetotal == 6) || (%dicetotal == 8)) { 
+        /var %d = 6 * $2     
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 6:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+      if (%dicetotal == 7) {    
+        /var %d = 5 * $2  
+        /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 5:1 odds for a total of 8,5$ $+ %d $+ .
+        /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
+        /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
+      }
+    }
+    elseif ((%money [ $+ [ $nick ] ] >= $2) && (%bet [ $+ [ $4 [ $+ [ $nick ] ] ] ] != 1)) {
+      /set %edice 1
+      /set %bet $+ $4 $+ $nick 1
+      msg $chan 4,11 $+ $nick bets 4,11$ $+ $calc($2) on $calc($4) $+ .
+      /dec %money $+ $nick $2
+      /timer $+ $4 $+ $nick $+ 1 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ .  Sorry, $nick $+ , that's a losing bet.  TIMTOM puts 8,5$ $+ $calc($2) into the pot.
+      /timer $+ $4 $+ $nick $+ 2 1 40 /inc %pot $2
+      /timer $+ $4 $+ $nick $+ 3 1 40 /unset %bet $+ $4 $+ $nick
+    }
+    elseif (%money [ $+ [ $nick ] ] >= $2) msg $chan 4,11Um... $+ $nick $+ ....I'm pretty sure you already bet on $calc($4) $+ .  I could be wrong though. ;P
+    else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to make that bet. :(
+  }
+}
+
+on *:TEXT:&:#:{
+  if ((%guess [ $+ [ $nick ] ] >= 1) && ($1 >= 1) && ($1 <= 20) && (. !isin $1)) {
+    if ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] == 1) && (%pot != $null) && (%pot != 0)) {
+      msg $chan 8,3WOW YOU GOT IT $upper($nick) $+ !  IT WAS $calc($1) $+ !!!  AND ON YOUR FIRST TRY!!!  YOU WIN THE POT AND SINCE YOU GOT IT ON YOUR FIRST TRY HERE'S 10 BONUS 0,2UNICORNS!!!!
+      /inc %money $+ $nick %pot
+      /inc %unicorn $+ $nick 10
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] == 1) && ((%pot == $null) || (%pot == 0))) {
+      msg $chan 8,3WOW YOU GOT IT $upper($nick) $+ !  IT WAS $calc($1) $+ !!!  AND ON YOUR FIRST TRY!!!  SINCE THE POT IS EMPTY, YOU GET 1 7,10PONY8,3, AND SINCE YOU GOT IT ON YOUR FIRST TRY HERE'S 10 BONUS 0,2UNICORNS!!!!
+      /inc %pony $+ $nick 1
+      /inc %unicorn $+ $nick 10
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] < 5) && (%pot != $null) && (%pot != 0)) {
+      msg $chan 8,3Yep, it was $calc($1) $+ .  Congratulations $nick $+ .  You win the pot!
+      /inc %money $+ $nick %pot
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] < 5) && ((%pot == $null) || (%pot == 0))) {
+      msg $chan 8,3Yep, it was $calc($1) $+ .  Congratulations $nick $+ .  Since the pot is empty, here's a 7,10pony8,3. ;)
+      /inc %pony $+ $nick 1
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] != $1) && (%guess [ $+ [ $nick ] ] < 5)) {
+      msg $chan 8,3Sorry, $nick $+ , that's not it.  Keep guessing.
+      /inc %guess $+ $nick 1
+      /set %eguess $+ $nick 1
+    }
+    elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] == 5) && (%pot != $null) && (%pot != 0)) {
+      msg $chan 8,3Yep, you got it, it was $calc($1) $+ .  And on your last guess - phew!  Congrats $nick $+ .  You win the pot!
+      /inc %money $+ $nick %pot
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] == 5) && ((%pot == $null) || (%pot == 0))) {
+      msg $chan 8,3Yep, you got it, it was $calc($1) $+ .  And on your last guess - phew!  Congrats $nick $+ .  Since the pot is empty, please accept this 7,10pony8,3 as a consolation prize.
+      /inc %pony $+ $nick 1
+      /unset %pot
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+    }
+    elseif ((%number [ $+ [ $nick ] ] != $1) && (%guess [ $+ [ $nick ] ] == 5)) {
+      msg $chan 8,3Sorry, $nick $+ , that's not it.  The correct number is %number [ $+ [ $nick ] ] :( :(  I hate to do it to you, but you're 11,6BANKRUPT!8,3  I'm sooooo sorry!!!
+      /unset %guess $+ $nick
+      /unset %eguess $+ $nick
+      /unset %number $+ $nick
+      /set %money $+ $nick 0
     }
   }
 }
