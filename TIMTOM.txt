@@ -646,7 +646,7 @@ on *:TEXT:help:#: {
 }
 
 on *:TEXT:drink:#:{
-  var %r = $rand(1,10)
+  var %r = $rand(1,11)
   if (%money [ $+ [ $nick ] ] >= 2) {
     if (%r == 1) {
       msg $chan 4,11timtom brings an ice cold beer for $nick $+ 
@@ -688,12 +688,16 @@ on *:TEXT:drink:#:{
       msg $chan 1,12timtom brings $nick a tall glass of water
       /dec %money $+ $nick 2
     }
+    if (%r == 11) {
+      msg $chan 2,7timtom administers a few droplets of GHB to $2- $+ 
+      /dec %money $+ $nick 2
+    }
   }
   else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to buy a drink.
 }
 
 on *:TEXT:drink*:#:{
-  var %r = $rand(1,10)
+  var %r = $rand(1,11)
   if (%money [ $+ [ $nick ] ] >= 2) {
     if (%r == 1) {
       msg $chan 4,11timtom brings an ice cold beer for $2- $+ .  You can thank $nick down there.
@@ -733,6 +737,10 @@ on *:TEXT:drink*:#:{
     }
     if (%r == 10) {
       msg $chan 1,12timtom brings $2- a tall glass of water
+      /dec %money $+ $nick 2
+    }
+    if (%r == 11) {
+      msg $chan 2,7timtom administers a few droplets of GHB to $2- $+ .
       /dec %money $+ $nick 2
     }
   }
@@ -867,6 +875,10 @@ on *:TEXT:mano:#: {
   msg $chan 10,7Oh $1 $+ .  Where would we be today without the constant support of you?  You've been here since the beginning and we hope you'll be here for years to come.  Keep up the progressive chatting.
 }
 
+on *:TEXT:mandingo:#: { 
+  msg $chan 10,7Congratulations son!  You are now officially part of the #gamme Circle of Friends.  We've seen some very positive things from you since you got here, and you've proven yourself to be an amicable chatter and a trustworthy soldier.  Way to go $1 $+ !!  And best of luck to you on the blackjack table!
+}
+
 on *:TEXT:matthew:#: { 
   msg $chan 10,7Hey $1 $+ !  Did we surprise you?  You did it!  You're a fine chatter and great company in $chan $+ .  Stop in anytime; I know you'll enjoy some of our newer features.  Sit back, relax, and 4,11SPIN THAT WHEEL!!!
 }
@@ -907,8 +919,16 @@ on *:TEXT:overfien:#: {
   msg $chan 10,7Hey $1 $+ .  You've flashed some real moments of brilliance and purity here, and we feel this should be rewarded.  Accept this membership as a token of $chan $+ 's appreciation for the person you put out there each and every day.  Stay for a time, stay for life!  $chan will always be here for you.
 }
 
+on *:TEXT:dubz:#: { 
+  msg $chan 10,7Hey $1 $+ .  You've flashed some real moments of brilliance and purity here, and we feel this should be rewarded.  Accept this membership as a token of $chan $+ 's appreciation for the person you put out there every single day.  Stay for a time, stay for life!  $chan will always be here for you.
+}
+
 on *:TEXT:papersk1n:#: { 
   msg $chan 1,8GOLD 10,7What's up $1 $+ ?  You're a tough one to please but it's people like you who make $chan better.  You are a 100% correct chatter and we feel honored that you would chat here.  Your criticisms are always noted and changes are implemented as soon as possible.
+}
+
+on *:TEXT:Patroclus:#: { 
+  msg $chan 1,8GOLD 10,7You've done it, $1 $+ , you've finally done it!  Your name will forever be etched onto the walls of greatness that house the names of all the members of $chan $+ .  I hope it feels good - you've waited long enough and have definitely earned it.  Keep up the pleasant chatter, friend!
 }
 
 on *:TEXT:phillip:#: { 
@@ -1004,6 +1024,22 @@ on *:TEXT:nachos*:#: {
   else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for a Nachos Fun Pack.
 }
 
+on *:TEXT:lasagna:#: { 
+  if (%money [ $+ [ $nick ] ] >= 2.50)  {
+    msg $chan 8,4TIMTOM brings out a delicious slice of homemade lasagna for $nick $+ .  Bon appetit!
+    /dec %money $+ $nick 2.50
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for lasagna.
+}
+
+on *:TEXT:lasagna*:#: { 
+  if (%money [ $+ [ $nick ] ] >= 2.50)  {
+    msg $chan 8,4TIMTOM brings out a delicious slice of homemade lasagna for $2- $+ , courtesy of $nick $+ .  Bon appetit!
+    /dec %money $+ $nick 2.50
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough for lasagna
+}
+
 on *:TEXT:admissions:#: { 
   msg $chan 1,8Download the Hertford College Admissions iPhone app here: 4,11http://itunes.apple.com/us/app/hertford-college-admissions/id382253306?mt=8
 }
@@ -1018,7 +1054,7 @@ on *:TEXT:marry:#:{
   elseif (%r == %i) msg $chan 4,1 $+ $nick marries a garbage can 
   elseif (%a == 1) msg $chan 4,8 $+ $nick marries $nick($chan,%r)
   elseif (%a == 2) msg $chan 5,11 $+ $nick marries $nick($chan,%r)
-  elseif (%a == 3) msg $chan 3,13 $+ $nick marries $nick($chan,%r)
+  elseif (%a == 3) msg $chan 9,13 $+ $nick marries $nick($chan,%r)
   elseif (%a == 4) msg $chan 2,8 $+ $nick marries $nick($chan,%r)
   elseif (%a == 5) msg $chan 8,1 $+ $nick marries $nick($chan,%r) 
   elseif (%a == 6) msg $chan 2,10 $+ $nick marries $nick($chan,%r)
@@ -1501,7 +1537,7 @@ on *:TEXT:marry*:#:{
   var %a = $rand(1,10)
   if (%a == 1) msg $chan 4,8 $+ $nick marries $2- $+
   if (%a == 2) msg $chan 5,11 $+ $nick marries $2- $+
-  if (%a == 3) msg $chan 3,13 $+ $nick marries $2- $+
+  if (%a == 3) msg $chan 9,13 $+ $nick marries $2- $+
   if (%a == 4) msg $chan 2,8 $+ $nick marries $2- $+
   if (%a == 5) msg $chan 8,1 $+ $nick marries $2- $+ 
   if (%a == 6) msg $chan 2,10 $+ $nick marries $2- $+
@@ -1546,6 +1582,24 @@ on *:TEXT:tacos:#: {
   }
   else msg $chan 4,11Sorry, $nick $+ , but you don't have enough to buy tacos for everyone.  It was noble of you to be thinking of everyone though.  Maybe try your luck on the wheel?
 }
+
+on *:TEXT:empanadas:#: { 
+  var %o = $nopnick($chan,0)
+  var %c = %o * .89
+  var %a = $rand(1,2)
+  if (%money [ $+ [ $nick ] ] >= %c)  {
+    if (%a == 1) {
+      msg $chan 7,5TIMTOM brings out the 2,9EMPANADAS7,5 for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+      /dec %money $+ $nick %c
+    }    
+    if (%a == 2) {
+      msg $chan 7,5TIMTOM brings out the 11,3EMPANADAS7,5 for $nopnick($chan,1) $nopnick($chan,2) $nopnick($chan,3) $nopnick($chan,4) $nopnick($chan,5) $nopnick($chan,6) $nopnick($chan,7) $nopnick($chan,8) $nopnick($chan,9) $nopnick($chan,10) $nopnick($chan,11) $nopnick($chan,12) $nopnick($chan,13) $nopnick($chan,14) $nopnick($chan,15) $nopnick($chan,16) $nopnick($chan,17) $nopnick($chan,18) $nopnick($chan,19) $nopnick($chan,20) $nopnick($chan,21) $nopnick($chan,22) $nopnick($chan,23) $nopnick($chan,24) $nopnick($chan,25) $nopnick($chan,26) $nopnick($chan,27) $nopnick($chan,28) $nopnick($chan,29) $nopnick($chan,30) $nopnick($chan,31) $nopnick($chan,32) $nopnick($chan,33) $nopnick($chan,34) $nopnick($chan,35)  ¡Buen provecho, amigos!  
+      /dec %money $+ $nick %c
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , but you don't have enough to buy tacos for everyone.  It was noble of you to be thinking of everyone though.  Maybe try your luck on the wheel?
+}
+
 
 on *:TEXT:sauce:#: { 
   var %a = $rand(1,4)
@@ -1621,7 +1675,7 @@ on *:TEXT:unicorn:#: {
 }
 
 on *:TEXT:prices:#: { 
-  msg $chan 5,10Hello $nick $+ !  These are the current market prices in $chan $+ :  drinks are 5,10$2 a piece, cake is 5,10$1.95 a piece, and pizza is 5,10$2.22 a slice.  Tacos are 5,10$.79 5,10/ person (all non-ops served), and sauce is 5,10$.25 extra.  A Nachos Fun Pack costs 5,10$3.95.  A pony will cost you 5,10$1000 and a unicorn will cost you 5,10$5000.  As always; soup, coffee, and tea are free; as are all of our other services.  Enjoy!
+  msg $chan 5,10Hello $nick $+ !  These are the current market prices in $chan $+ :  drinks are 5,10$2 a piece, cake is 5,10$1.95 a piece, and pizza is 5,10$2.22 a slice.  Homemade lasagna is 5,10$2.50.  Tacos are 5,10$.79 5,10/ person (all non-ops served), and sauce is 5,10$.25 extra.  A Nachos Fun Pack costs 5,10$3.95.  A pony will cost you 5,10$1000 and a unicorn will cost you 5,10$5000.  As always; soup, coffee, and tea are free; as are all of our other services.  Enjoy!
 }
 
 on *:TEXT:end:#: {
@@ -2134,6 +2188,7 @@ on *:TEXT:hit:#:{
     if ((%card [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] != 11) && (%ttotal [ $+ [ $nick ] ] == $null) && (%total [ $+ [ $nick ] ] >= 22)) {
       if ($len(%bet [ $+ [ $nick ] ]) >= 5) {
         msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you %total [ $+ [ $nick ] ] $+ .  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ $bytes(%bet [ $+ [ $nick ] ],b) into the pot.  Better luck next game.
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2145,6 +2200,7 @@ on *:TEXT:hit:#:{
       }
       else {
         msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you %total [ $+ [ $nick ] ] $+ .  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ %bet [ $+ [ $nick ] ] into the pot.  Better luck next game.
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2175,6 +2231,7 @@ on *:TEXT:hit:#:{
     elseif (%total [ $+ [ $nick ] ] == 32) {
       if ($len(%bet [ $+ [ $nick ] ]) >= 5) { 
         msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you 22.  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ $bytes(%bet [ $+ [ $nick ] ],b) into the pot.  Why did you hit on 21??!!
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2187,6 +2244,7 @@ on *:TEXT:hit:#:{
       }
       else { 
         msg $chan 1,13Ok, $nick $+ , you got %ccard [ $+ [ [ %blackjack [ $+ [ $nick ] ] ] [ $+ [ $nick ] ] ] ] $+ .  This gives you 22.  Sorry $nick :( :(  You busted.  Dealer puts 1,13$ $+ %bet [ $+ [ $nick ] ] into the pot.  Why did you hit on 21??!!
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2217,6 +2275,7 @@ on *:TEXT:stand:#:{
         msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  Awww, shucks, I got blackjack.  I'm sorry.  Dealer puts 11,2$ $+ $bytes(%bet [ $+ [ $nick ] ],b) into the pot.  Ya know what, though, here's 1 bonus 7,10PONY 11,2since I feel so bad about the whole thing.
         msg $chan 7,10Finally, $nick gets a pony.
         /inc %pony $+ $nick 1
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2232,6 +2291,7 @@ on *:TEXT:stand:#:{
         msg $chan 11,2Alright-o, $nick $+ !  Dealer has %ddealer1 [ $+ [ $nick ] ] and %ddealer2 [ $+ [ $nick ] ] $+ .  Awww, shucks, I got blackjack.  I'm sorry.  Dealer puts 11,2$ $+ %bet [ $+ [ $nick ] ] into the pot.  Ya know what, though, here's 1 bonus 7,10PONY 11,2since I feel so bad about the whole thing.
         msg $chan 7,10Finally, $nick gets a pony.
         /inc %pony $+ $nick 1
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %bet $+ $nick 
@@ -2394,6 +2454,7 @@ on *:TEXT:stand:#:{
     elseif (%dealertotal [ $+ [ $nick ] ] > %total [ $+ [ $nick ] ]) {
       if ($len(%bet [ $+ [ $nick ] ]) >= 5) {  
         msg $chan 8,5Ah well, I won.  I hate to have to do it to you, $nick $+ , but I'm going to have to take 8,5$ $+ $bytes(%bet [ $+ [ $nick ] ],b) from you and put it into the pot.  :(  I hope you play again sometime and have better luck.
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %card* $+ $nick
@@ -2408,6 +2469,7 @@ on *:TEXT:stand:#:{
       }
       else {  
         msg $chan 8,5Ah well, I won.  I hate to have to do it to you, $nick $+ , but I'm going to have to take 8,5$ $+ %bet [ $+ [ $nick ] ] from you and put it into the pot.  :(  I hope you play again sometime and have better luck.
+        /inc %pot $+ $nick %bet [ $+ [ $nick ] ]
         /inc %pot %bet [ $+ [ $nick ] ]
         /unset %blackjack $+ $nick
         /unset %card* $+ $nick
@@ -2461,13 +2523,30 @@ on *:TEXT:pot:#:{
   else msg $chan 4,11The pot is currently at 4,11$ $+ %pot $+ .  Somebody better win it soon!
 }
 
+on *:TEXT:my pot:#:{
+  if ((%pot == $null) || (%pot == 0)) msg $chan 4,11The pot is currently empty.
+  elseif ((%pot [ $+ [ $nick ] ] == $null) || (%pot [ $+ [ $nick ] ] == 0)) msg $chan 7,2How are you doing, $nick $+ ?  Currently, none of the pot has come out of your pockets!
+  elseif (%pot [ $+ [ $nick ] ] == %pot) msg $chan 1,4Would you look at that, $nick $+ !!  The current pot has come from you and you alone!
+  else msg $chan 7,2Howdy $nick $+ .  At the moment, approximately $round($calc((%pot [ $+ [ $nick ] ] / %pot)*100),2) $+ 7,2% of the pot is yours.
+}
+
+on *:TEXT:& pot:#:{
+  if ((%pot == $null) || (%pot == 0)) msg $chan 4,11The pot is currently empty.
+  elseif ((%pot [ $+ [ $1 ] ] == $null) || (%pot [ $+ [ $1 ] ] == 0)) msg $chan 7,2How are you doing, $nick $+ ?  Currently, $1 hasn't contributed anything to the pot.
+  elseif (%pot [ $+ [ $1 ] ] == %pot) msg $chan 1,4What's up, $nick $+ ?  Right now the entire pot has come from $1 $+ . lol.
+  else msg $chan 7,2Howdy $nick $+ .  At the moment, approximately $round($calc((%pot [ $+ [ $1 ] ] / %pot)*100),2) $+ 7,2% of the pot has come from $1 $+ .
+}
+
+
 on $*:TEXT:/^(guess|guess a number)$/i:#: {
-  if (%eguess [ $+ [ $nick ] ] != 1) {
+  if ((%eguess [ $+ [ $nick ] ] != 1) && (($calc(%pot [ $+ [ $nick ] ] / %pot) <= .75) || (%pot == $null) || (%pot == 0))) {
     /set %guess $+ $nick 1
     msg $chan 13,2Hey $nick $+ .  I'm thinking of a number between 1 and 20.  You have 5 tries to guess it.  Figure it out and you win THE POT!!!!!  Miss it, and you're 11,6BANKRUPT!!!!!
     /set %number $+ $nick $rand(1,20)
   }
-  else msg $chan 4,11Sorry, $nick $+ , you need to finish the game you started. >:D
+  elseif (%eguess [ $+ [ $nick ] ] == 1) msg $chan 4,11Sorry, $nick $+ , you need to finish the game you started. >:D
+  elseif (%pot [ $+ [ $nick ] ] == %pot) msg $chan 1,4Sorry, $nick $+ , but all of the pot has come from you.  Try winning the pot at another time, when other people have contributed as well.
+  else msg $chan 1,4Sorry, $nick $+ , but approximately $round($calc((%pot [ $+ [ $nick ] ] / %pot)*100),2) $+ 1,4% of the pot is yours.  That's a bit too much.  Try winning the pot at another time, when the money is more evenly distributed.
 }
 
 on *:TEXT:dice:#:{
@@ -2504,42 +2583,42 @@ on *:TEXT:bet & on &:#:{
         /dec %money $+ $nick $2
         if ((%dicetotal == 2) || (%dicetotal == 12)) {
           /var %d = 35 * $2      
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 35:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 35:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 3) || (%dicetotal == 11)) { 
           /var %d = 17 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 17:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 17:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 4) || (%dicetotal == 10)) { 
           /var %d = 11 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 11:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 11:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 5) || (%dicetotal == 9)) {   
           /var %d = 8 * $2   
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 8:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 8:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 6) || (%dicetotal == 8)) { 
           /var %d = 6 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 6:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 6:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if (%dicetotal == 7) {    
           /var %d = 5 * $2  
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 5:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ . 11,6You win $nick $+ !8,5 TIMTOM pays 5:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
@@ -2550,42 +2629,42 @@ on *:TEXT:bet & on &:#:{
         /dec %money $+ $nick $2
         if ((%dicetotal == 2) || (%dicetotal == 12)) {
           /var %d = 35 * $2      
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 35:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 35:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 3) || (%dicetotal == 11)) { 
           /var %d = 17 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 17:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 17:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 4) || (%dicetotal == 10)) { 
           /var %d = 11 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 11:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 11:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 5) || (%dicetotal == 9)) {   
           /var %d = 8 * $2   
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 8:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 8:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if ((%dicetotal == 6) || (%dicetotal == 8)) { 
           /var %d = 6 * $2     
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 6:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 6:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
         }
         if (%dicetotal == 7) {    
           /var %d = 5 * $2  
-          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . You win $nick $+ ! TIMTOM pays 5:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
+          /timer $+ $4 $+ $nick $+ 2 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ . 6,11You win $nick $+ !8,5 TIMTOM pays 5:1 odds for a total of 8,5$ $+ $bytes(%d,b) $+ .
           /timer $+ $4 $+ $nick $+ 3 1 40 /inc %money $+ $nick $2
           /timer $+ $4 $+ $nick $+ 4 1 40 /inc %money $+ $nick %d
           /timer $+ $4 $+ $nick $+ 1 1 40 /unset %bet $+ $4 $+ $nick
@@ -2599,6 +2678,7 @@ on *:TEXT:bet & on &:#:{
         msg $chan 4,11 $+ $nick bets 4,11$ $+ $bytes($calc($2),b) on $calc($4) $+ .
         /dec %money $+ $nick $2
         /timer $+ $4 $+ $nick $+ 1 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $bytes($calc($2),b) on $calc($4) $+ .  Sorry, $nick $+ , that's a losing bet.  TIMTOM puts 8,5$ $+ $bytes($calc($2),b) into the pot.
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %pot $+ $nick $2
         /timer $+ $4 $+ $nick $+ 2 1 40 /inc %pot $2
         /timer $+ $4 $+ $nick $+ 3 1 40 /unset %bet $+ $4 $+ $nick
       }
@@ -2606,6 +2686,7 @@ on *:TEXT:bet & on &:#:{
         msg $chan 4,11 $+ $nick bets 4,11$ $+ $calc($2) on $calc($4) $+ .
         /dec %money $+ $nick $2
         /timer $+ $4 $+ $nick $+ 1 1 40 msg $chan 8,5Let's see here... $+ $nick bet 8,5$ $+ $calc($2) on $calc($4) $+ .  Sorry, $nick $+ , that's a losing bet.  TIMTOM puts 8,5$ $+ $calc($2) into the pot.
+        /timer $+ $4 $+ $nick $+ 4 1 40 /inc %pot $+ $nick $2
         /timer $+ $4 $+ $nick $+ 2 1 40 /inc %pot $2
         /timer $+ $4 $+ $nick $+ 3 1 40 /unset %bet $+ $4 $+ $nick
       }
@@ -2644,7 +2725,7 @@ on *:TEXT:&:#:{
           /inc %i 1
         }
       } 
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
@@ -2677,7 +2758,7 @@ on *:TEXT:&:#:{
           /inc %i 1
         }
       } 
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
@@ -2685,7 +2766,7 @@ on *:TEXT:&:#:{
     elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] < 5) && (%pot != $null) && (%pot != 0)) {
       msg $chan 8,3Yep, it was $calc($1) $+ .  Congratulations $nick $+ .  You win the pot!
       /inc %money $+ $nick %pot
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
@@ -2694,7 +2775,7 @@ on *:TEXT:&:#:{
       msg $chan 8,3Yep, it was $calc($1) $+ .  Congratulations $nick $+ .  Since the pot is empty, here's a 7,10pony8,3. ;)
       msg $chan 7,10Finally, $nick gets a pony.
       /inc %pony $+ $nick 1
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
@@ -2707,7 +2788,7 @@ on *:TEXT:&:#:{
     elseif ((%number [ $+ [ $nick ] ] == $1) && (%guess [ $+ [ $nick ] ] == 5) && (%pot != $null) && (%pot != 0)) {
       msg $chan 8,3Yep, you got it, it was $calc($1) $+ .  And on your last guess - phew!  Congrats $nick $+ .  You win the pot!
       /inc %money $+ $nick %pot
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
@@ -2716,7 +2797,7 @@ on *:TEXT:&:#:{
       msg $chan 8,3Yep, you got it, it was $calc($1) $+ .  And on your last guess - phew!  Congrats $nick $+ .  Since the pot is empty, please accept this 7,10pony8,3 as a consolation prize.
       msg $chan 7,10Finally, $nick gets a pony.
       /inc %pony $+ $nick 1
-      /unset %pot
+      /unset %pot*
       /unset %guess $+ $nick
       /unset %eguess $+ $nick
       /unset %number $+ $nick
