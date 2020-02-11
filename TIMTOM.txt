@@ -1,5 +1,5 @@
 Hi, my name is gamme.  This is my friend timtom.  He is a servant to the people.
-Copyright (C) 2011-2020 gamme
+Copyright (C) 2011-2017 gamme
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -647,7 +647,7 @@ on *:TEXT:help:#: {
 
 on *:TEXT:give*:#:{
   if . isin $3 msg $chan 4,11Please, $nick $+ , only whole dollar transfers.
-  elseif (%money [ $+ [ $nick ] ] >= $3) && ($3 >= 0) {
+  elseif (%money [ $+ [ $nick ] ] >= $3) && ($calc($3) >= 0) {
     msg $chan 8,6HELLO!  HELLO!  TIMTOM here!  Why sure, $nick $+ , I'll transfer $ $+ $bytes($calc($3),b) over to $2 $+ 's account.  We also deduct a $ $+ 2 transfer fee that will be added to the pot.  Thank you for banking with TIMTOM!
     /dec %money $+ $nick $3
     /dec %money $+ $nick 2
