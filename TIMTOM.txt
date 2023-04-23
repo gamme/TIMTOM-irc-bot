@@ -829,6 +829,76 @@ on *:TEXT:crab*:#:{
   else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to buy a crab dinner.
 }
 
+on *:TEXT:pillow:#:{
+  var %r = $rand(1,7)
+  if (%money [ $+ [ $nick ] ] >= 5) {
+    if (%r == 1) {
+      msg $chan 4,11timtom breaks out a barely used anime pillow for $nick $+ .
+      /dec %money $+ $nick 5
+    }
+    if (%r == 2) {
+      msg $chan 8,2timtom hands $nick a crusty pillow.
+      /dec %money $+ $nick 5
+    }
+    if (%r == 3) {
+      msg $chan 8,1timtom swiftly sews together a personalized pillow for $nick $+ .
+      /dec %money $+ $nick 5
+    }
+    if (%r == 4) {
+      msg $chan 7,5timtom is here with the male realdoll for $nick $+.
+      /dec %money $+ $nick 5
+    }
+    if (%r == 5) {
+      msg $chan 3,8timtom busts one last time on his favourite pillow before handing it to $nick $+.
+      /dec %money $+ $nick 5
+    }
+    if (%r == 6) {
+      msg $chan 8,2timtom sprinkles some magic on a comfy pillow for $nick $+ .
+      /dec %money $+ $nick 5
+    }
+    if (%r == 7) {
+      msg $chan 2,10timtom gives $nick a brand new pillow.  Sweet dreams, friend.
+      /dec %money $+ $nick 5
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to buy a pillow.
+}
+
+on *:TEXT:pillow*:#:{
+  var %r = $rand(1,7)
+  if (%money [ $+ [ $nick ] ] >= 5) {
+    if (%r == 1) {
+      msg $chan 4,11timtom breaks out a barely used anime pillow for $2- $+ . You can thank $nick down there.
+      /dec %money $+ $nick 5
+    }
+    if (%r == 2) {
+      msg $chan 8,2timtom hands $2- a crusty pillow.  It's on $nick $+ .
+      /dec %money $+ $nick 5
+    }
+    if (%r == 3) {
+      msg $chan 8,1timtom swiftly sews together a personalized pillow for $2- $+ . This one's on $nick $+ .
+      /dec %money $+ $nick 5
+    }
+    if (%r == 4) {
+      msg $chan 7,5timtom is here with the male realdoll for $2- $+.
+      /dec %money $+ $nick 5
+    }
+    if (%r == 5) {
+      msg $chan 3,8timtom busts one last time on his favourite pillow before handing it to $2- $+. 
+      /dec %money $+ $nick 5
+    }
+    if (%r == 6) {
+      msg $chan 8,2timtom sprinkles some magic on a comfy pillow for $2- $+ . You can high five $nick down there. 
+      /dec %money $+ $nick 5
+    }
+    if (%r == 7) {
+      msg $chan 2,10timtom gives $2- a brand new pillow. Sweet dreams from $nick, friend..
+      /dec %money $+ $nick 5
+    }
+  }
+  else msg $chan 4,11Sorry, $nick $+ , you don't have enough money to buy a pillow.
+}
+
 
 on *:TEXT:keek:#:{
   var %r = $rand(1,64)
